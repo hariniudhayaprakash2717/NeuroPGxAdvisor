@@ -1,5 +1,5 @@
 Disease,Gene,Phenotype,Drug,Recommendation,AlternativeDrug,Reason,EvidenceLevel
-Depression,CYP2D6,Normal Metabolizer,Fluoxetine,Standard Dose,nan,Normal CYP2D6 metabolism,High
+Depression,CYP2D6,Normal Metabolizer,Fluoxetine,Standard Dose,,Normal CYP2D6 metabolism,High
 Depression,CYP2D6,Intermediate Metabolizer,Fluoxetine,Reduce Dose,Escitalopram,Reduced CYP2D6 metabolism,High
 Depression,CYP2D6,Poor Metabolizer,Fluoxetine,Avoid,Escitalopram,High plasma concentration and adverse effect risk,High
 Depression,CYP2C19,Normal Metabolizer,Escitalopram,Standard Dose,,Normal CYP2C19 metabolism,High
@@ -94,7 +94,4 @@ Essential Tremor,CYP2D6,Normal Metabolizer,Propranolol,Standard Dose,,Normal met
 Essential Tremor,CYP2D6,Intermediate Metabolizer,Propranolol,Reduce Dose,Primidone,Reduced metabolism,Moderate
 Essential Tremor,CYP2D6,Poor Metabolizer,Propranolol,Avoid,Primidone,Drug accumulation risk,High
 Lewy Body Dementia,APOE,Low Risk,Donepezil,Standard Dose,,Expected treatment response,Moderate
-Lewy Body Dementia,APOE,Average Risk,Donepezil,Standard Dose,,Standard treatment response,Moderate
 Lewy Body Dementia,APOE,High Risk,Donepezil,Use With Monitoring,Memantine,Increased disease progression risk,Moderate
-Frontotemporal Dementia,MAPT,Normal Response,Donepezil,Standard Dose,,Expected treatment response,Moderate
-Frontotemporal Dementia,MAPT,High Risk,Donepezil,Increase Monitoring,Memantine,Tau pathology associated with disease progression,Moderate

@@ -28,13 +28,14 @@ background:#eef4fb;
 }
 
 .navbar{
-height:75px;
+min-height:75px;
 background:#0f172a;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:0 40px;
+padding:15px 40px;
 color:white;
+flex-wrap:wrap;
 }
 
 .logo{
@@ -52,8 +53,9 @@ color:#38bdf8;
 
 .nav-links{
 display:flex;
-gap:25px;
+gap:20px;
 align-items:center;
+flex-wrap:wrap;
 }
 
 .nav-links a{
@@ -156,6 +158,10 @@ border:1px solid #ccc;
 font-size:16px;
 outline:none;
 }
+.search-card input:focus{
+    border-color:#2563eb;
+    box-shadow:0 0 0 3px rgba(37,99,235,.15);
+}
 
 .table-card{
 background:white;
@@ -199,38 +205,128 @@ font-size:14px;
 .download-btn:hover{
 background:#15803d;
 }
+/* ================= RESPONSIVE ================= */
 
+.table-responsive{
+    width:100%;
+    overflow-x:auto;
+}
+
+table{
+    min-width:900px;
+}
+
+@media (max-width:992px){
+
+    .navbar{
+        flex-direction:column;
+        height:auto;
+        padding:20px;
+        gap:15px;
+    }
+
+    .nav-links{
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:15px;
+    }
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media (max-width:768px){
+
+    .container{
+        width:95%;
+    }
+
+    .welcome-card h1{
+        font-size:28px;
+    }
+
+    .welcome-card p{
+        font-size:15px;
+    }
+
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+    .card{
+        padding:22px;
+    }
+
+    .card h2{
+        font-size:30px;
+    }
+
+    .search-card input{
+        font-size:15px;
+    }
+
+    .download-btn{
+        display:inline-block;
+        width:100%;
+        text-align:center;
+    }
+
+}
+
+@media (max-width:480px){
+
+    .logo{
+        font-size:22px;
+    }
+
+    .logo i{
+        font-size:28px;
+    }
+
+    .nav-links{
+        flex-direction:column;
+        gap:12px;
+    }
+
+    .logout{
+        width:100%;
+        text-align:center;
+    }
+
+}
 </style>
 
 </head>
 
 <body>
-
 <nav class="navbar">
 
-<div class="logo">
+    <div class="logo">
+        <i class="fa-solid fa-dna"></i>
+        <span>NeuroPGx Advisor</span>
+    </div>
 
-<i class="fa-solid fa-dna"></i>
+    <div class="nav-links">
 
-<span>NeuroPGx Advisor</span>
+        <a href="/dashboard">Dashboard</a>
 
-</div>
+        <a href="/">Patient Analysis</a>
 
-<div class="nav-links">
+        <a href="/history">History</a>
 
-<a href="/dashboard">Dashboard</a>
+        {% if role in ["System Administrator","Doctor","Researcher"] %}
+        <a href="/druginfo">Drug DB</a>
+        {% endif %}
 
-<a href="/">Patient Analysis</a>
+        {% if role == "System Administrator" %}
+        <a href="/admin">Admin</a>
+        {% endif %}
 
-<a href="/history">History</a>
+        <a href="/logout" class="logout">Logout</a>
 
-<a href="/druginfo">Drug DB</a>
-
-<a href="/admin">Admin</a>
-
-<a href="/logout" class="logout">Logout</a>
-
-</div>
+    </div>
 
 </nav>
 
@@ -390,48 +486,63 @@ No patient history available.
 </div>
 </div>
 
-<footer style="margin-top:50px;">
+<footer style="margin-top:50px;width:100%;">
 
-<div style="background:#0f172a;color:white;padding:25px;border-radius:15px;text-align:center;">
+<div style="background:#0f172a;
+color:white;
+padding:35px 20px;
+border-radius:18px;
+text-align:center;
+box-shadow:0 10px 25px rgba(0,0,0,.15);">
 
-<h2>
+<h2 style="font-size:30px;margin-bottom:15px;">
 
-<i class="fa-solid fa-dna"></i>
+<i class="fa-solid fa-dna" style="color:#38bdf8;"></i>
 
 NeuroPGx Advisor
 
 </h2>
 
-<p style="margin-top:10px;">
+<p style="margin-bottom:10px;font-size:16px;color:#cbd5e1;">
 
 Clinical Decision Support System for Precision Medicine
 
 </p>
 
-<p>
+<p style="margin-bottom:8px;">
 
-Developed by:
-<b>Harini Udhayaprakash</b>
+<strong>Developed By:</strong>
 
-</p>
-
-<p>
-
-Department:
-<b>BioTechnology</b>
+Harini Udhayaprakash
 
 </p>
 
-<p>
+<p style="margin-bottom:8px;">
 
-Email:
-<b>hariniudhayaprakash2717@gmail.com</b>
+<strong>Department:</strong>
+
+BioTechnology
 
 </p>
 
-<p style="margin-top:10px;">
+<p style="margin-bottom:8px;">
 
-© 2026 All Rights Reserved
+<strong>Email:</strong>
+
+<span style="color:#38bdf8;">
+hariniudhayaprakash2717@gmail.com
+</span>
+
+</p>
+
+<hr style="margin:20px auto;
+width:80%;
+border:none;
+border-top:1px solid rgba(255,255,255,.15);">
+
+<p style="font-size:14px;color:#94a3b8;">
+
+© 2026 NeuroPGx Advisor. All Rights Reserved.
 
 </p>
 

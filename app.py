@@ -145,14 +145,11 @@ def dashboard():
     if "user" not in session:
         return redirect(url_for("login"))
 
-    print("===== DASHBOARD SESSION =====")
-    print(session)
-    print("=============================")
-
     total_diseases = len(disease_df)
     total_genes = len(gene_df)
     total_genotypes = len(genotype_df)
 
+    # Read drug database
     drug_df = pd.read_csv("data/drug_database.csv")
     total_drugs = len(drug_df)
 
@@ -202,7 +199,6 @@ def admin():
         total_drugs=len(drug_df),
         users=users_df.to_dict(orient="records")
     )
-
 # =====================================================
 # Add User
 # =====================================================
@@ -210,12 +206,22 @@ def admin():
 @app.route("/add_user")
 def add_user():
 
+    # User must be logged in
     if "user" not in session:
         return redirect(url_for("login"))
 
+    # Only System Administrator can access
+    if session["role"] != "System Administrator":
+        return render_template(
+            "403.html",
+            fullname=session["fullname"],
+            role=session["role"]
+        )
+
     return render_template(
         "add_user.html",
-        fullname=session["fullname"]
+        fullname=session["fullname"],
+        role=session["role"]
     )
 # =====================================================
 # Save User
@@ -224,8 +230,17 @@ def add_user():
 @app.route("/save_user", methods=["POST"])
 def save_user():
 
+    # User must be logged in
     if "user" not in session:
         return redirect(url_for("login"))
+
+    # Only System Administrator can save users
+    if session["role"] != "System Administrator":
+        return render_template(
+            "403.html",
+            fullname=session["fullname"],
+            role=session["role"]
+        )
 
     userid = request.form["userid"]
     username = request.form["username"]
@@ -249,9 +264,13 @@ def save_user():
 
     users_df = pd.read_csv(users_file)
 
-    users_df = pd.concat([users_df, new_user], ignore_index=True)
+    users_df = pd.concat(
+        [users_df, new_user],
+        ignore_index=True
+    )
 
     users_df.to_csv(users_file, index=False)
+
     return redirect(url_for("admin"))
 # =====================================================
 # Edit User
@@ -260,12 +279,23 @@ def save_user():
 @app.route("/edit_user/<userid>")
 def edit_user(userid):
 
+    # User must be logged in
     if "user" not in session:
         return redirect(url_for("login"))
 
+    # Only System Administrator can edit users
+    if session["role"] != "System Administrator":
+        return render_template(
+            "403.html",
+            fullname=session["fullname"],
+            role=session["role"]
+        )
+
     users_df = pd.read_csv("data/users.csv")
 
-    user = users_df[users_df["UserID"] == userid]
+    user = users_df[
+        users_df["UserID"] == userid
+    ]
 
     if user.empty:
         return "User not found"
@@ -274,7 +304,9 @@ def edit_user(userid):
 
     return render_template(
         "edit_user.html",
-        user=user
+        user=user,
+        fullname=session["fullname"],
+        role=session["role"]
     )
 # =====================================================
 # Update User
@@ -283,8 +315,17 @@ def edit_user(userid):
 @app.route("/update_user", methods=["POST"])
 def update_user():
 
+    # User must be logged in
     if "user" not in session:
         return redirect(url_for("login"))
+
+    # Only System Administrator can update users
+    if session["role"] != "System Administrator":
+        return render_template(
+            "403.html",
+            fullname=session["fullname"],
+            role=session["role"]
+        )
 
     users_file = "data/users.csv"
 
@@ -292,12 +333,35 @@ def update_user():
 
     userid = request.form["userid"]
 
-    users_df.loc[users_df["UserID"] == userid, "Username"] = request.form["username"]
-    users_df.loc[users_df["UserID"] == userid, "Password"] = request.form["password"]
-    users_df.loc[users_df["UserID"] == userid, "Role"] = request.form["role"]
-    users_df.loc[users_df["UserID"] == userid, "FullName"] = request.form["fullname"]
-    users_df.loc[users_df["UserID"] == userid, "Department"] = request.form["department"]
-    users_df.loc[users_df["UserID"] == userid, "Email"] = request.form["email"]
+    users_df.loc[
+        users_df["UserID"] == userid,
+        "Username"
+    ] = request.form["username"]
+
+    users_df.loc[
+        users_df["UserID"] == userid,
+        "Password"
+    ] = request.form["password"]
+
+    users_df.loc[
+        users_df["UserID"] == userid,
+        "Role"
+    ] = request.form["role"]
+
+    users_df.loc[
+        users_df["UserID"] == userid,
+        "FullName"
+    ] = request.form["fullname"]
+
+    users_df.loc[
+        users_df["UserID"] == userid,
+        "Department"
+    ] = request.form["department"]
+
+    users_df.loc[
+        users_df["UserID"] == userid,
+        "Email"
+    ] = request.form["email"]
 
     users_df.to_csv(users_file, index=False)
 
@@ -309,15 +373,28 @@ def update_user():
 @app.route("/delete_user/<userid>")
 def delete_user(userid):
 
+    # User must be logged in
     if "user" not in session:
         return redirect(url_for("login"))
+
+    # Only System Administrator can delete users
+    if session["role"] != "System Administrator":
+        return render_template(
+            "403.html",
+            fullname=session["fullname"],
+            role=session["role"]
+        )
 
     users_file = "data/users.csv"
 
     users_df = pd.read_csv(users_file)
 
-    users_df = users_df[users_df["UserID"] != userid]
+    # Delete selected user
+    users_df = users_df[
+        users_df["UserID"] != userid
+    ]
 
+    # Save updated CSV
     users_df.to_csv(users_file, index=False)
 
     return redirect(url_for("admin"))
@@ -338,10 +415,13 @@ def druginfo():
         "Doctor",
         "Researcher"
     ]:
-        return render_template("403.html")
+        return render_template(
+            "403.html",
+            fullname=session["fullname"],
+            role=session["role"]
+        )
 
     drug_df = pd.read_csv("data/drug_database.csv")
-
     drug_df.fillna("", inplace=True)
 
     drugs = drug_df.to_dict(orient="records")
@@ -360,12 +440,25 @@ def druginfo():
 @app.route("/add_drug")
 def add_drug():
 
+    # User must be logged in
     if "user" not in session:
         return redirect(url_for("login"))
 
+    # Only System Administrator and Doctor can add drugs
+    if session["role"] not in [
+        "System Administrator",
+        "Doctor"
+    ]:
+        return render_template(
+            "403.html",
+            fullname=session["fullname"],
+            role=session["role"]
+        )
+
     return render_template(
         "add_drug.html",
-        fullname=session["fullname"]
+        fullname=session["fullname"],
+        role=session["role"]
     )
 # =====================================================
 # Save Drug
@@ -374,8 +467,20 @@ def add_drug():
 @app.route("/save_drug", methods=["POST"])
 def save_drug():
 
+    # User must be logged in
     if "user" not in session:
         return redirect(url_for("login"))
+
+    # Only System Administrator and Doctor can save drugs
+    if session["role"] not in [
+        "System Administrator",
+        "Doctor"
+    ]:
+        return render_template(
+            "403.html",
+            fullname=session["fullname"],
+            role=session["role"]
+        )
 
     drug_file = "data/drug_database.csv"
 
@@ -392,7 +497,10 @@ def save_drug():
 
     drug_df = pd.read_csv(drug_file)
 
-    drug_df = pd.concat([drug_df, new_drug], ignore_index=True)
+    drug_df = pd.concat(
+        [drug_df, new_drug],
+        ignore_index=True
+    )
 
     drug_df.to_csv(drug_file, index=False)
 
@@ -404,17 +512,35 @@ def save_drug():
 @app.route("/edit_drug/<int:index>")
 def edit_drug(index):
 
+    # User must be logged in
     if "user" not in session:
         return redirect(url_for("login"))
 
+    # Only System Administrator and Doctor can edit drugs
+    if session["role"] not in [
+        "System Administrator",
+        "Doctor"
+    ]:
+        return render_template(
+            "403.html",
+            fullname=session["fullname"],
+            role=session["role"]
+        )
+
     drug_df = pd.read_csv("data/drug_database.csv")
+
+    # Check if index exists
+    if index < 0 or index >= len(drug_df):
+        return "Drug not found"
 
     drug = drug_df.iloc[index]
 
     return render_template(
         "edit_drug.html",
         drug=drug,
-        index=index
+        index=index,
+        fullname=session["fullname"],
+        role=session["role"]
     )
 # =====================================================
 # Update Drug
@@ -423,14 +549,30 @@ def edit_drug(index):
 @app.route("/update_drug", methods=["POST"])
 def update_drug():
 
+    # User must be logged in
     if "user" not in session:
         return redirect(url_for("login"))
+
+    # Only System Administrator and Doctor can update drugs
+    if session["role"] not in [
+        "System Administrator",
+        "Doctor"
+    ]:
+        return render_template(
+            "403.html",
+            fullname=session["fullname"],
+            role=session["role"]
+        )
 
     drug_file = "data/drug_database.csv"
 
     drug_df = pd.read_csv(drug_file)
 
     index = int(request.form["index"])
+
+    # Check if index exists
+    if index < 0 or index >= len(drug_df):
+        return "Drug not found"
 
     drug_df.loc[index, "Disease"] = request.form["disease"]
     drug_df.loc[index, "Gene"] = request.form["gene"]
@@ -451,23 +593,40 @@ def update_drug():
 @app.route("/delete_drug/<int:index>")
 def delete_drug(index):
 
+    # User must be logged in
     if "user" not in session:
         return redirect(url_for("login"))
+
+    # Only System Administrator and Doctor can delete drugs
+    if session["role"] not in [
+        "System Administrator",
+        "Doctor"
+    ]:
+        return render_template(
+            "403.html",
+            fullname=session["fullname"],
+            role=session["role"]
+        )
 
     drug_file = "data/drug_database.csv"
 
     drug_df = pd.read_csv(drug_file)
 
-    # Delete the selected row
+    # Check if index exists
+    if index < 0 or index >= len(drug_df):
+        return "Drug not found"
+
+    # Delete selected row
     drug_df = drug_df.drop(index)
 
     # Reset index
     drug_df.reset_index(drop=True, inplace=True)
 
-    # Save back to CSV
+    # Save updated CSV
     drug_df.to_csv(drug_file, index=False)
 
-    return redirect(url_for("druginfo"))
+    return redirect(url_for("druginfo"))\
+
 # =====================================================
 # Patient History
 # =====================================================

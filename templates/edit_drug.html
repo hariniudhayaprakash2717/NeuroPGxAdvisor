@@ -1,170 +1,263 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
 
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<title>Edit Drug</title>
+    <title>Edit Drug | NeuroPGx Advisor</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
 
-<style>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Poppins,sans-serif;
-}
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+  </head>
 
-body{
-    background:#eef4fb;
-}
+  <body>
+    <!-- ===================== NAVBAR ===================== -->
 
-.container{
-    width:100%;
-    display:flex;
-    justify-content:center;
-    padding:40px 20px;
-}
+    <nav class="navbar">
+      <div class="logo">
+        <i class="fa-solid fa-dna"></i>
 
-.card{
-    width:700px;
-    background:white;
-    padding:35px;
-    border-radius:15px;
-    box-shadow:0 10px 25px rgba(0,0,0,.08);
-}
+        <span>NeuroPGx Advisor</span>
+      </div>
 
-h1{
-    margin-bottom:25px;
-    color:#0f172a;
-}
+      <ul class="nav-links">
+        <li><a href="/dashboard">Dashboard</a></li>
 
-.form-group{
-    margin-bottom:18px;
-}
+        <li><a href="/">Patient Analysis</a></li>
 
-label{
-    display:block;
-    margin-bottom:8px;
-    font-weight:600;
-}
+        <li><a href="/history">History</a></li>
 
-input{
-    width:100%;
-    padding:12px;
-    border:1px solid #ccc;
-    border-radius:8px;
-    font-size:15px;
-}
+        <li><a href="/druginfo">Drug DB</a></li>
 
-.buttons{
-    display:flex;
-    gap:15px;
-    margin-top:25px;
-}
+        <li><a href="/admin">Admin</a></li>
 
-.save-btn{
-    background:#2563eb;
-    color:white;
-    padding:12px 25px;
-    border:none;
-    border-radius:8px;
-    cursor:pointer;
-    font-size:15px;
-}
+        <li>
+          <a href="/logout" class="logout">
+            <i class="fa-solid fa-right-from-bracket"></i>
 
-.back-btn{
-    background:#64748b;
-    color:white;
-    padding:12px 25px;
-    border-radius:8px;
-    text-decoration:none;
-}
+            Logout
+          </a>
+        </li>
+      </ul>
+    </nav>
 
-.save-btn:hover{
-    background:#1d4ed8;
-}
+    <!-- ===================== CONTAINER ===================== -->
 
-.back-btn:hover{
-    background:#475569;
-}
+    <div class="container">
+      <div class="welcome-card">
+        <h1>
+          <i class="fa-solid fa-pen-to-square" style="color: #2563eb"></i>
 
-</style>
+          Edit Drug
+        </h1>
 
-</head>
+        <p>Update pharmacogenomic drug recommendation.</p>
+      </div>
+      <!-- ===================== EDIT DRUG FORM ===================== -->
 
-<body>
+      <div class="glass-card">
+        <h2>
+          <i class="fa-solid fa-capsules"></i>
 
-<div class="container">
+          Update Drug Information
+        </h2>
 
-<div class="card">
+        <form action="/update_drug" method="POST">
+          <input type="hidden" name="index" value="{{ index }}" />
 
-<h1>✏️ Edit Drug</h1>
+          <div class="input-grid">
+            <div class="input-box">
+              <label>Disease</label>
 
-<form action="/update_drug" method="POST">
+              <input
+                type="text"
+                name="disease"
+                value="{{ drug.Disease }}"
+                required
+              />
+            </div>
 
-<input type="hidden" name="index" value="{{ index }}">
+            <div class="input-box">
+              <label>Gene</label>
 
-<div class="form-group">
-<label>Disease</label>
-<input type="text" name="disease" value="{{ drug.Disease }}">
-</div>
+              <input type="text" name="gene" value="{{ drug.Gene }}" required />
+            </div>
 
-<div class="form-group">
-<label>Gene</label>
-<input type="text" name="gene" value="{{ drug.Gene }}">
-</div>
+            <div class="input-box">
+              <label>Phenotype</label>
 
-<div class="form-group">
-<label>Phenotype</label>
-<input type="text" name="phenotype" value="{{ drug.Phenotype }}">
-</div>
+              <input
+                type="text"
+                name="phenotype"
+                value="{{ drug.Phenotype }}"
+                required
+              />
+            </div>
 
-<div class="form-group">
-<label>Drug</label>
-<input type="text" name="drug" value="{{ drug.Drug }}">
-</div>
+            <div class="input-box">
+              <label>Drug</label>
 
-<div class="form-group">
-<label>Recommendation</label>
-<input type="text" name="recommendation" value="{{ drug.Recommendation }}">
-</div>
+              <input type="text" name="drug" value="{{ drug.Drug }}" required />
+            </div>
 
-<div class="form-group">
-<label>Alternative Drug</label>
-<input type="text" name="alternative" value="{{ drug.AlternativeDrug }}">
-</div>
+            <div class="input-box">
+              <label>Recommendation</label>
 
-<div class="form-group">
-<label>Reason</label>
-<input type="text" name="reason" value="{{ drug.Reason }}">
-</div>
+              <input
+                type="text"
+                name="recommendation"
+                value="{{ drug.Recommendation }}"
+                required
+              />
+            </div>
 
-<div class="form-group">
-<label>Evidence Level</label>
-<input type="text" name="evidence" value="{{ drug.EvidenceLevel }}">
-</div>
+            <div class="input-box">
+              <label>Alternative Drug</label>
 
-<div class="buttons">
+              <input
+                type="text"
+                name="alternative"
+                value="{{ drug.AlternativeDrug }}"
+              />
+            </div>
 
-<button class="save-btn" type="submit">
-💾 Save Changes
-</button>
+            <div class="input-box" style="grid-column: 1/3">
+              <label>Clinical Reason</label>
 
-<a href="/druginfo" class="back-btn">
-← Back
-</a>
+              <textarea name="reason" rows="5" required>
+{{ drug.Reason }}</textarea
+              >
+            </div>
 
-</div>
+            <div class="input-box">
+              <label>Evidence Level</label>
 
-</form>
+              <select name="evidence" required>
 
-</div>
+    <option
+        value="High"
+        {% if drug.EvidenceLevel == "High" %}selected{% endif %}>
+        High
+    </option>
 
-</div>
+    <option
+        value="Moderate"
+        {% if drug.EvidenceLevel == "Moderate" %}selected{% endif %}>
+        Moderate
+    </option>
 
-</body>
+    <option
+        value="Low"
+        {% if drug.EvidenceLevel == "Low" %}selected{% endif %}>
+        Low
+    </option>
+
+</select>
+            </div>
+          </div>
+
+          <div
+            style="
+              display: flex;
+              justify-content: center;
+              gap: 20px;
+              margin-top: 40px;
+              flex-wrap: wrap;
+            "
+          >
+            <button type="submit" class="predict-btn">
+              <i class="fa-solid fa-floppy-disk"></i>
+
+              Update Drug
+            </button>
+
+            <a
+              href="/druginfo"
+              class="predict-btn"
+              style="
+                text-decoration: none;
+                text-align: center;
+                width: auto;
+                padding: 18px 35px;
+                background: #64748b;
+              "
+            >
+              <i class="fa-solid fa-arrow-left"></i>
+
+              Back
+            </a>
+          </div>
+        </form>
+      </div>
+      <!-- ===================== FOOTER ===================== -->
+
+      <footer style="margin-top: 60px; width: 100%">
+        <div
+          style="
+            background: #0f172a;
+            color: white;
+            padding: 35px 20px;
+            text-align: center;
+            border-radius: 18px;
+          "
+        >
+          <h2>
+            <i class="fa-solid fa-dna" style="color: #38bdf8"></i>
+
+            NeuroPGx Advisor
+          </h2>
+
+          <p style="margin-top: 15px">
+            Clinical Decision Support System for Precision Medicine
+          </p>
+
+          <p style="margin-top: 10px">
+            <strong>Developed By:</strong>
+
+            Harini Udhayaprakash
+          </p>
+
+          <p style="margin-top: 10px">
+            <strong>Department:</strong>
+
+            BioTechnology
+          </p>
+
+          <p style="margin-top: 10px">
+            <strong>Email:</strong>
+
+            <span style="color: #38bdf8">
+              hariniudhayaprakash2717@gmail.com
+            </span>
+          </p>
+
+          <hr
+            style="
+              margin: 20px auto;
+              width: 80%;
+              border: none;
+              border-top: 1px solid rgba(255, 255, 255, 0.15);
+            "
+          />
+
+          <p style="font-size: 14px; color: #94a3b8">
+            © 2026 NeuroPGx Advisor. All Rights Reserved.
+          </p>
+        </div>
+      </footer>
+    </div>
+  </body>
 </html>

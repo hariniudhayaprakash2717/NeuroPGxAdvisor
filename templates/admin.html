@@ -1,481 +1,664 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Admin Panel | NeuroPGx Advisor</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Poppins,sans-serif;
-}
-
-body{
-background:#eef4fb;
-}
-
-.navbar{
-height:75px;
-background:#0f172a;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:0 40px;
-color:white;
-}
-
-.logo{
-display:flex;
-align-items:center;
-gap:15px;
-font-size:28px;
-font-weight:700;
-}
-
-.logo i{
-font-size:34px;
-color:#38bdf8;
-}
-
-.menu{
-display:flex;
-gap:25px;
-align-items:center;
-}
-
-.menu a{
-color:white;
-text-decoration:none;
-font-weight:500;
-}
-
-.menu a:hover{
-color:#38bdf8;
-}
-
-.logout{
-background:#ef4444;
-padding:10px 18px;
-border-radius:8px;
-color:white;
-text-decoration:none;
-font-weight:600;
-}
-
-.container{
-width:94%;
-margin:35px auto;
-}
-
-.welcome{
-background:white;
-padding:30px;
-border-radius:18px;
-box-shadow:0 10px 25px rgba(0,0,0,.08);
-margin-bottom:30px;
-}
-
-.welcome h1{
-font-size:34px;
-margin-bottom:10px;
-color:#0f172a;
-}
-
-.welcome p{
-color:#64748b;
-font-size:17px;
-}
-
-.cards{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:25px;
-margin-bottom:35px;
-}
-
-.card{
-background:white;
-padding:25px;
-border-radius:18px;
-box-shadow:0 10px 25px rgba(0,0,0,.08);
-text-align:center;
-transition:.3s;
-}
-
-.card:hover{
-transform:translateY(-5px);
-}
-
-.card i{
-font-size:40px;
-color:#2563eb;
-margin-bottom:15px;
-}
-
-.card h2{
-font-size:36px;
-color:#0f172a;
-margin-bottom:8px;
-}
-
-.card p{
-color:#64748b;
-}
-
-.search-box{
-background:white;
-padding:25px;
-border-radius:18px;
-box-shadow:0 10px 25px rgba(0,0,0,.08);
-margin-bottom:30px;
-}
-
-.search-box input{
-width:100%;
-padding:14px;
-border:1px solid #ccc;
-border-radius:10px;
-font-size:16px;
-outline:none;
-}
-
-.table-box{
-background:white;
-padding:25px;
-border-radius:18px;
-box-shadow:0 10px 25px rgba(0,0,0,.08);
-overflow-x:auto;
-}
-
-table{
-width:100%;
-border-collapse:collapse;
-}
-
-th{
-background:#2563eb;
-color:white;
-padding:15px;
-}
-
-td{
-padding:15px;
-border-bottom:1px solid #ddd;
-text-align:center;
-}
-
-tr:hover{
-background:#f8fbff;
-}
-
-.edit{
-background:#2563eb;
-color:white;
-padding:8px 12px;
-border-radius:6px;
-text-decoration:none;
-margin-right:5px;
-}
-
-.delete{
-background:#dc2626;
-color:white;
-padding:8px 12px;
-border-radius:6px;
-text-decoration:none;
-}
-
-</style>
-
-</head>
-
-<body>
-
-<nav class="navbar">
-
-<div class="logo">
-
-<i class="fa-solid fa-dna"></i>
-
-<span>NeuroPGx Advisor</span>
-
-</div>
-
-<div class="menu">
-
-<a href="/dashboard">Dashboard</a>
-
-<a href="/">Analysis</a>
-
-<a href="/history">History</a>
-
-<a href="/druginfo">Drug DB</a>
-
-<a href="/admin">Admin</a>
-
-<a href="/logout" class="logout">Logout</a>
-
-</div>
-
-</nav>
-
-<div class="container">
-
-<div class="welcome">
-
-<h1>Administration Panel</h1>
-
-<p>
-
-Welcome
-
-<b>{{ fullname }}</b>
-
-|
-
-Role :
-
-<b>{{ role }}</b>
-
-</p>
-
-</div>
-
-<div class="cards">
-
-<div class="card">
-
-<i class="fa-solid fa-users"></i>
-
-<h2>{{ total_users }}</h2>
-
-<p>Total Users</p>
-
-</div>
-
-<div class="card">
-
-<i class="fa-solid fa-user-doctor"></i>
-
-<h2>{{ total_patients }}</h2>
-
-<p>Patients</p>
-
-</div>
-
-<div class="card">
-
-<i class="fa-solid fa-brain"></i>
-
-<h2>{{ total_diseases }}</h2>
-
-<p>Diseases</p>
-
-</div>
-
-<div class="card">
-
-<i class="fa-solid fa-capsules"></i>
-
-<h2>{{ total_drugs }}</h2>
-
-<p>Drug Rules</p>
-
-</div>
-
-</div>
-
-<div class="search-box">
-
-<div style="display:flex;gap:15px;">
-
-<input
-type="text"
-id="searchUser"
-placeholder="Search user...">
-
-<a
-href="/add_user"
-style="
-background:#16a34a;
-color:white;
-padding:14px 22px;
-border-radius:10px;
-text-decoration:none;
-font-weight:600;
-white-space:nowrap;">
-
-<i class="fa-solid fa-user-plus"></i>
-
-Add User
-
-</a>
-
-</div>
-
-</div>
-
-<div class="table-box">
-
-<table id="userTable">
-
-<thead>
-
-<tr>
-
-<th>Name</th>
-
-<th>Role</th>
-
-<th>Department</th>
-
-<th>Email</th>
-
-<th>Action</th>
-
-</tr>
-
-</thead>
-
-<tbody>
-    {% for user in users %}
-
-<tr>
-
-<td>{{ user.FullName }}</td>
-
-<td>{{ user.Role }}</td>
-
-<td>{{ user.Department }}</td>
-
-<td>{{ user.Email }}</td>
-
-<td>
-
-<a href="/edit_user/{{ user.UserID }}" class="edit">
-
-<i class="fa-solid fa-pen-to-square"></i>
-
-Edit
-
-</a>
-
-<a href="/delete_user/{{ user.UserID }}"
-class="delete"
-onclick="return confirm('Are you sure you want to delete this user?')">
-
-<i class="fa-solid fa-trash"></i>
-
-Delete
-
-</a>
-
-</td>
-
-</tr>
-
-{% endfor %}
-
-</tbody>
-
-</table>
-
-</div>
-
-<footer style="margin-top:50px;">
-
-<div style="background:#0f172a;color:white;padding:25px;border-radius:15px;text-align:center;">
-
-<h2>
-
-<i class="fa-solid fa-dna"></i>
-
-NeuroPGx Advisor
-
-</h2>
-
-<p style="margin-top:10px;">
-
-Clinical Decision Support System for Precision Medicine
-
-</p>
-
-<p>
-
-Developed by
-
-<b>Harini Udhayaprakash</b>
-
-</p>
-
-<p>
-
-Department
-
-<b>BioTechnology</b>
-
-</p>
-
-<p>
-
-Email
-
-<b>hariniudhayaprakash2717@gmail.com</b>
-
-</p>
-
-<p style="margin-top:10px;">
-
-© 2026 All Rights Reserved
-
-</p>
-
-</div>
-
-</footer>
-
-<script>
-
-const search=document.getElementById("searchUser");
-
-search.addEventListener("keyup",function(){
-
-let filter=this.value.toLowerCase();
-
-let rows=document.querySelectorAll("#userTable tbody tr");
-
-rows.forEach(function(row){
-
-let text=row.innerText.toLowerCase();
-
-if(text.includes(filter))
-{
-row.style.display="";
-}
-else
-{
-row.style.display="none";
-}
-
-});
-
-});
-
-</script>
-
-</body>
-
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Admin Panel | NeuroPGx Advisor</title>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+
+    <style>
+      .admin-navbar {
+        position: sticky;
+        top: 0;
+        z-index: 999;
+        width: 100%;
+        background: #0f172a;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 18px 7%;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+      }
+
+      .admin-logo {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        font-size: 30px;
+        font-weight: 700;
+        color: #ffffff;
+      }
+
+      .admin-logo i {
+        font-size: 34px;
+        color: #3b82f6;
+      }
+
+      .admin-links {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+        list-style: none;
+      }
+
+      .admin-links a {
+        color: white;
+        text-decoration: none;
+        font-size: 15px;
+        font-weight: 500;
+        transition: 0.3s;
+      }
+
+      .admin-links a:hover {
+        color: #60a5fa;
+      }
+
+      .logout-btn {
+        background: #ef4444;
+        padding: 11px 22px;
+        border-radius: 10px;
+        color: white !important;
+        font-weight: 600;
+      }
+
+      .logout-btn:hover {
+        background: #dc2626;
+      }
+
+      .page-container {
+        width: min(1400px, 94%);
+        margin: 40px auto;
+      }
+
+      @media (max-width: 992px) {
+        .admin-navbar {
+          flex-direction: column;
+          gap: 20px;
+          padding: 20px;
+        }
+
+        .admin-links {
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 18px;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .admin-logo {
+          font-size: 24px;
+        }
+
+        .admin-logo i {
+          font-size: 28px;
+        }
+
+        .admin-links {
+          flex-direction: column;
+          gap: 14px;
+        }
+
+        .logout-btn {
+          width: 100%;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- ===================== NAVBAR ===================== -->
+
+    <nav class="admin-navbar">
+      <div class="admin-logo">
+        <i class="fa-solid fa-dna"></i>
+
+        <span>NeuroPGx Advisor</span>
+      </div>
+
+      <ul class="admin-links">
+        <li><a href="/dashboard">Dashboard</a></li>
+
+        <li><a href="/">Patient Analysis</a></li>
+
+        <li><a href="/history">History</a></li>
+
+        <li><a href="/druginfo">Drug DB</a></li>
+
+        <li><a href="/admin">Admin</a></li>
+
+        <li>
+          <a href="/logout" class="logout-btn">
+            <i class="fa-solid fa-right-from-bracket"></i>
+
+            Logout
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="page-container">
+      <!-- ===================== WELCOME SECTION ===================== -->
+
+      <div
+        style="
+          background: linear-gradient(135deg, #2563eb, #1e3a8a);
+          color: white;
+          padding: 40px;
+          border-radius: 22px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          flex-wrap: wrap;
+          gap: 30px;
+          margin-bottom: 35px;
+          box-shadow: 0 15px 35px rgba(37, 99, 235, 0.25);
+        "
+      >
+        <div>
+          <h1 style="font-size: 38px; font-weight: 700; margin-bottom: 12px">
+            <i class="fa-solid fa-user-shield"></i>
+
+            Administrator Dashboard
+          </h1>
+
+          <p style="font-size: 18px; opacity: 0.95; line-height: 1.7">
+            Welcome back,
+
+            <b>{{ fullname }}</b>
+
+            <br />
+
+            Manage users, monitor patient records and maintain the NeuroPGx
+            clinical decision support system.
+          </p>
+        </div>
+
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-width: 220px;
+          "
+        >
+          <div
+            style="
+              width: 90px;
+              height: 90px;
+              background: rgba(255, 255, 255, 0.15);
+              border-radius: 50%;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              font-size: 40px;
+              margin-bottom: 15px;
+              backdrop-filter: blur(10px);
+            "
+          >
+            <i class="fa-solid fa-user-doctor"></i>
+          </div>
+
+          <h2 style="font-size: 24px">{{ role }}</h2>
+
+          <p style="opacity: 0.9">System Access Granted</p>
+        </div>
+      </div>
+      <!-- ===================== STATISTICS ===================== -->
+
+      <div
+        style="
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+          gap: 25px;
+          margin-bottom: 40px;
+        "
+      >
+        <!-- Total Users -->
+
+        <div
+          style="
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: 0.3s;
+          "
+        >
+          <div
+            style="
+              width: 65px;
+              height: 65px;
+              background: #dbeafe;
+              border-radius: 15px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 28px;
+              color: #2563eb;
+              margin-bottom: 18px;
+            "
+          >
+            <i class="fa-solid fa-users"></i>
+          </div>
+
+          <h2 style="font-size: 40px; font-weight: 700; color: #0f172a">
+            {{ total_users }}
+          </h2>
+
+          <p style="font-size: 16px; color: #64748b; margin-top: 8px">
+            Registered Users
+          </p>
+        </div>
+
+        <!-- Patients -->
+
+        <div
+          style="
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: 0.3s;
+          "
+        >
+          <div
+            style="
+              width: 65px;
+              height: 65px;
+              background: #dcfce7;
+              border-radius: 15px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 28px;
+              color: #16a34a;
+              margin-bottom: 18px;
+            "
+          >
+            <i class="fa-solid fa-hospital-user"></i>
+          </div>
+
+          <h2 style="font-size: 40px; font-weight: 700; color: #0f172a">
+            {{ total_patients }}
+          </h2>
+
+          <p style="font-size: 16px; color: #64748b; margin-top: 8px">
+            Patient Records
+          </p>
+        </div>
+
+        <!-- Diseases -->
+
+        <div
+          style="
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: 0.3s;
+          "
+        >
+          <div
+            style="
+              width: 65px;
+              height: 65px;
+              background: #ede9fe;
+              border-radius: 15px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 28px;
+              color: #7c3aed;
+              margin-bottom: 18px;
+            "
+          >
+            <i class="fa-solid fa-virus"></i>
+          </div>
+
+          <h2 style="font-size: 40px; font-weight: 700; color: #0f172a">
+            {{ total_diseases }}
+          </h2>
+
+          <p style="font-size: 16px; color: #64748b; margin-top: 8px">
+            Diseases
+          </p>
+        </div>
+
+        <!-- Drugs -->
+
+        <div
+          style="
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: 0.3s;
+          "
+        >
+          <div
+            style="
+              width: 65px;
+              height: 65px;
+              background: #fef3c7;
+              border-radius: 15px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 28px;
+              color: #d97706;
+              margin-bottom: 18px;
+            "
+          >
+            <i class="fa-solid fa-capsules"></i>
+          </div>
+
+          <h2 style="font-size: 40px; font-weight: 700; color: #0f172a">
+            {{ total_drugs }}
+          </h2>
+
+          <p style="font-size: 16px; color: #64748b; margin-top: 8px">
+            Drug Records
+          </p>
+        </div>
+      </div>
+      <!-- ===================== ACTION BAR ===================== -->
+
+      <div
+        style="
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 25px;
+          flex-wrap: wrap;
+          margin-bottom: 35px;
+        "
+      >
+        <!-- Search Box -->
+
+        <div style="flex: 1; min-width: 280px; position: relative">
+          <i
+            class="fa-solid fa-magnifying-glass"
+            style="
+              position: absolute;
+              left: 18px;
+              top: 50%;
+              transform: translateY(-50%);
+              color: #94a3b8;
+              font-size: 18px;
+            "
+          >
+          </i>
+
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search users by name, username, department or role..."
+            style="
+              width: 100%;
+              padding: 16px 20px 16px 52px;
+              border: none;
+              border-radius: 15px;
+              background: white;
+              font-size: 16px;
+              box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+              outline: none;
+              transition: 0.3s;
+            "
+          />
+        </div>
+
+        <!-- Add User Button -->
+
+        <a
+          href="/add_user"
+          style="
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: white;
+            padding: 16px 30px;
+            border-radius: 15px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.25);
+            transition: 0.3s;
+          "
+        >
+          <i class="fa-solid fa-user-plus"></i>
+
+          Add New User
+        </a>
+      </div>
+      <!-- ===================== USERS TABLE ===================== -->
+
+      <div
+        style="
+          background: white;
+          border-radius: 22px;
+          padding: 30px;
+          box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+          overflow: hidden;
+        "
+      >
+        <h2
+          style="
+            margin-bottom: 25px;
+            color: #0f172a;
+            font-size: 28px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+          "
+        >
+          <i class="fa-solid fa-users" style="color: #2563eb"></i>
+
+          Registered Users
+        </h2>
+
+        <div style="overflow-x: auto">
+          <table
+            id="userTable"
+            style="
+              width: 100%;
+              border-collapse: collapse;
+              min-width: 1100px;
+              color: #1e293b;
+              font-size: 15px;
+            "
+          >
+            <thead>
+              <tr style="background: #2563eb; color: white">
+                <th style="padding: 18px">User ID</th>
+
+                <th style="padding: 18px">Username</th>
+
+                <th style="padding: 18px">Full Name</th>
+
+                <th style="padding: 18px">Role</th>
+
+                <th style="padding: 18px">Department</th>
+
+                <th style="padding: 18px">Email</th>
+
+                <th style="padding: 18px">Actions</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {% for user in users %}
+              <tr
+                style="
+                  border-bottom: 1px solid #e5e7eb;
+                  transition: 0.3s;
+                  color: #1e293b;
+                "
+              >
+                <td style="padding: 18px">{{ user.UserID }}</td>
+
+                <td style="padding: 18px">{{ user.Username }}</td>
+
+                <td style="padding: 18px; font-weight: 600">
+                  {{ user.FullName }}
+                </td>
+
+                <td style="padding: 18px">
+                  <span
+                    style="
+                      background: #dbeafe;
+                      color: #1d4ed8;
+                      padding: 7px 14px;
+                      border-radius: 30px;
+                      font-size: 13px;
+                      font-weight: 600;
+                    "
+                  >
+                    {{ user.Role }}
+                  </span>
+                </td>
+
+                <td style="padding: 18px">{{ user.Department }}</td>
+
+                <td style="padding: 18px">{{ user.Email }}</td>
+
+                <td style="padding: 18px; white-space: nowrap">
+                  <a
+                    href="/edit_user/{{ user.UserID }}"
+                    style="
+                      display: inline-flex;
+                      justify-content: center;
+                      align-items: center;
+                      width: 42px;
+                      height: 42px;
+                      background: #2563eb;
+                      color: white;
+                      border-radius: 10px;
+                      text-decoration: none;
+                      margin-right: 10px;
+                    "
+                  >
+                    <i class="fa-solid fa-pen"></i>
+                  </a>
+
+                  <a
+                    href="/delete_user/{{ user.UserID }}"
+                    onclick="return confirm('Delete this user?');"
+                    style="
+                      display: inline-flex;
+                      justify-content: center;
+                      align-items: center;
+                      width: 42px;
+                      height: 42px;
+                      background: #ef4444;
+                      color: white;
+                      border-radius: 10px;
+                      text-decoration: none;
+                    "
+                  >
+                    <i class="fa-solid fa-trash"></i>
+                  </a>
+                </td>
+              </tr>
+
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- ===================== FOOTER ===================== -->
+
+      <footer style="margin-top: 60px; width: 100%">
+        <div
+          style="
+            background: #0f172a;
+            color: white;
+            padding: 40px 20px;
+            border-radius: 22px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+          "
+        >
+          <h2 style="font-size: 30px; margin-bottom: 15px">
+            <i class="fa-solid fa-dna" style="color: #3b82f6"></i>
+
+            NeuroPGx Advisor
+          </h2>
+
+          <p style="font-size: 17px; color: #cbd5e1; margin-bottom: 10px">
+            Clinical Decision Support System for Precision Medicine
+          </p>
+
+          <p style="margin-bottom: 8px">
+            <strong>Developed By:</strong>
+
+            Harini Udhayaprakash
+          </p>
+
+          <p style="margin-bottom: 8px">
+            <strong>Department:</strong>
+
+            BioTechnology
+          </p>
+
+          <p style="margin-bottom: 8px">
+            <strong>Email:</strong>
+
+            <span style="color: #60a5fa">
+              hariniudhayaprakash2717@gmail.com
+            </span>
+          </p>
+
+          <hr
+            style="
+              margin: 22px auto;
+              width: 80%;
+              border: none;
+              border-top: 1px solid rgba(255, 255, 255, 0.15);
+            "
+          />
+
+          <p style="font-size: 14px; color: #94a3b8">
+            © 2026 NeuroPGx Advisor. All Rights Reserved.
+          </p>
+        </div>
+      </footer>
+    </div>
+
+    <!-- ===================== SEARCH ===================== -->
+
+    <script>
+      const searchInput = document.getElementById("searchInput");
+
+      searchInput.addEventListener("keyup", function () {
+        const filter = this.value.toLowerCase();
+
+        const rows = document.querySelectorAll("#userTable tbody tr");
+
+        rows.forEach(function (row) {
+          const text = row.innerText.toLowerCase();
+
+          row.style.display = text.includes(filter) ? "" : "none";
+        });
+      });
+    </script>
+  </body>
 </html>

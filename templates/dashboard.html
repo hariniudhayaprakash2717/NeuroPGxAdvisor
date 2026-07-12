@@ -16,57 +16,68 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
+
     <style>
+      /* ===================== NAVBAR ===================== */
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
         font-family: "Poppins", sans-serif;
+        scroll-behavior: smooth;
       }
 
       body {
         background: #eef4fb;
+        color: #0f172a;
       }
 
-      /* ===================== NAVBAR ===================== */
+      .container {
+        width: 90%;
+        max-width: 1280px;
+        margin: 35px auto;
+      }
 
+      a {
+        text-decoration: none;
+      }
       .navbar {
-        height: 80px;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+
         background: #0f172a;
+        color: white;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 0 40px;
-        color: white;
+        flex-wrap: wrap;
+        padding: 18px 35px;
+        gap: 20px;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
       }
-
       .logo {
         display: flex;
         align-items: center;
         gap: 12px;
-        font-size: 26px;
+        font-size: 28px;
         font-weight: 700;
       }
 
       .logo i {
-        font-size: 34px;
         color: #38bdf8;
+        font-size: 34px;
       }
 
       .nav-links {
         display: flex;
-        align-items: center;
-        gap: 25px;
         list-style: none;
-      }
-
-      .nav-links li {
-        list-style: none;
+        gap: 22px;
+        flex-wrap: wrap;
+        justify-content: center;
       }
 
       .nav-links a {
-        text-decoration: none;
         color: white;
         font-size: 15px;
         font-weight: 600;
@@ -84,7 +95,8 @@
       .user {
         display: flex;
         align-items: center;
-        gap: 20px;
+        gap: 18px;
+        flex-wrap: wrap;
       }
 
       .user-info {
@@ -92,22 +104,19 @@
       }
 
       .user-info h3 {
-        margin: 0;
         font-size: 16px;
       }
 
       .user-info p {
-        margin: 0;
         font-size: 13px;
         color: #cbd5e1;
       }
 
       .logout {
         background: #ef4444;
+        color: white;
         padding: 10px 18px;
         border-radius: 10px;
-        text-decoration: none;
-        color: white;
         font-weight: 600;
         transition: 0.3s;
       }
@@ -115,14 +124,6 @@
       .logout:hover {
         background: #dc2626;
       }
-
-      /* ===================== CONTAINER ===================== */
-
-      .container {
-        width: 92%;
-        margin: 40px auto;
-      }
-
       /* ===================== WELCOME ===================== */
 
       .welcome {
@@ -134,13 +135,13 @@
       }
 
       .welcome h1 {
-        color: #0f172a;
         font-size: 34px;
+        color: #0f172a;
         margin-bottom: 10px;
       }
 
       .welcome p {
-        font-size: 18px;
+        font-size: 17px;
         color: #64748b;
         line-height: 1.8;
       }
@@ -149,88 +150,296 @@
 
       .cards {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 25px;
-        margin-bottom: 30px;
+        margin-top: 25px;
+        margin-bottom: 40px;
       }
 
       .card {
         background: white;
-        padding: 30px;
         border-radius: 20px;
+        padding: 30px;
+        text-align: center;
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
         transition: 0.3s;
-        text-align: center;
       }
 
       .card:hover {
-        transform: translateY(-8px);
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 20px 40px rgba(37, 99, 235, 0.15);
       }
 
       .card i {
         font-size: 45px;
-        margin-bottom: 18px;
         color: #2563eb;
+        margin-bottom: 15px;
       }
 
       .card h1 {
         font-size: 42px;
         color: #0f172a;
-        margin-bottom: 10px;
       }
 
       .card h3 {
+        margin-top: 10px;
         color: #0f172a;
-        margin-bottom: 10px;
       }
 
       .card p {
-        font-size: 17px;
         color: #64748b;
-        line-height: 1.7;
+        margin-top: 10px;
+        line-height: 1.6;
+      }
+      /* ===================== SECTION TITLE ===================== */
+
+      .section-title {
+        margin: 50px 0 25px;
+        font-size: 30px;
+        color: #0f172a;
+        font-weight: 700;
       }
 
+      .action-card {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .action-card .card {
+        cursor: pointer;
+      }
+
+      .action-card .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 35px rgba(37, 99, 235, 0.15);
+      }
       /* ===================== TABLE ===================== */
 
-      table {
+      .activity-table {
         width: 100%;
+        min-width: 700px;
         border-collapse: collapse;
       }
 
-      table th {
+      .activity-table th {
         background: #2563eb;
         color: white;
         padding: 15px;
+        text-align: left;
       }
 
-      table td {
+      .activity-table td {
         padding: 15px;
         border-bottom: 1px solid #ddd;
       }
 
+      .activity-table tr:hover {
+        background: #f5f8ff;
+      }
+      /* ===================== TABLE ===================== */
+
+      .table-container {
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        padding: 25px;
+        overflow-x: auto;
+      }
+
+      /* ===================== ABOUT ===================== */
+
+      .about-card {
+        background: white;
+
+        padding: 30px;
+
+        border-radius: 20px;
+
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+
+        line-height: 2;
+
+        font-size: 17px;
+
+        color: #475569;
+
+        margin-bottom: 50px;
+      }
       /* ===================== FOOTER ===================== */
 
-      footer {
+      .footer {
+        background: #0f172a;
+
+        color: white;
+
+        padding: 35px;
+
+        border-radius: 20px 20px 0 0;
+
+        text-align: center;
+
         margin-top: 60px;
       }
 
-      .footer-content {
-        background: #0f172a;
-        color: white;
-        text-align: center;
-        padding: 30px;
-      }
-
-      .footer-content h2 {
+      .footer h2 {
         margin-bottom: 15px;
       }
 
-      .footer-content p {
-        margin: 8px 0;
+      .footer p {
+        margin: 10px 0;
       }
 
-      .footer-content i {
+      .footer i {
         color: #38bdf8;
+      }
+      /* ===================== RESPONSIVE ===================== */
+
+      @media (max-width: 992px) {
+        .navbar {
+          flex-direction: column;
+          align-items: center;
+          padding: 20px;
+        }
+
+        .nav-links {
+          justify-content: center;
+          flex-wrap: wrap;
+          gap: 15px;
+        }
+
+        .user {
+          justify-content: center;
+          text-align: center;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          width: 95%;
+          margin: 20px auto;
+        }
+
+        .navbar {
+          padding: 15px;
+        }
+
+        .logo {
+          font-size: 22px;
+        }
+
+        .logo i {
+          font-size: 28px;
+        }
+
+        .nav-links {
+          width: 100%;
+          justify-content: center;
+          gap: 12px;
+        }
+
+        .user {
+          width: 100%;
+          justify-content: center;
+          flex-direction: column;
+        }
+
+        .user-info {
+          text-align: center;
+        }
+
+        .welcome {
+          padding: 25px;
+        }
+
+        .welcome h1 {
+          font-size: 28px;
+        }
+
+        .welcome p {
+          font-size: 15px;
+        }
+
+        .cards {
+          grid-template-columns: 1fr;
+        }
+
+        .card {
+          padding: 22px;
+        }
+
+        .card h1 {
+          font-size: 32px;
+        }
+
+        .card h3 {
+          font-size: 22px;
+        }
+
+        .card p {
+          font-size: 15px;
+        }
+
+        .activity-table {
+          min-width: 650px;
+        }
+
+        .section-title {
+          font-size: 26px;
+          text-align: center;
+        }
+
+        .footer {
+          padding: 25px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .logo {
+          font-size: 20px;
+        }
+
+        .logo i {
+          font-size: 24px;
+        }
+
+        .nav-links {
+          flex-direction: column;
+          align-items: center;
+          gap: 10px;
+        }
+
+        .logout {
+          width: 100%;
+          text-align: center;
+        }
+
+        .welcome h1 {
+          font-size: 24px;
+        }
+
+        .welcome p {
+          font-size: 14px;
+        }
+
+        .section-title {
+          font-size: 22px;
+        }
+
+        .card {
+          padding: 18px;
+        }
+
+        .card i {
+          font-size: 34px;
+        }
+
+        .card h1 {
+          font-size: 28px;
+        }
+
+        .card h3 {
+          font-size: 18px;
+        }
       }
     </style>
   </head>
@@ -242,43 +451,37 @@
 
         <span>NeuroPGx Dashboard</span>
       </div>
+
       <ul class="nav-links">
+        <li>
+          <a href="/dashboard"> <i class="fa-solid fa-house"></i> Dashboard </a>
+        </li>
 
-    <li>
-        <a href="/dashboard">
-            <i class="fa-solid fa-house"></i> Dashboard
-        </a>
-    </li>
+        <li>
+          <a href="/"> <i class="fa-solid fa-user-doctor"></i> Analyze </a>
+        </li>
 
-    <li>
-        <a href="/">
-            <i class="fa-solid fa-user-doctor"></i> Analyze
-        </a>
-    </li>
-
-    <li>
-        <a href="/history">
+        <li>
+          <a href="/history">
             <i class="fa-solid fa-clock-rotate-left"></i> History
-        </a>
-    </li>
+          </a>
+        </li>
 
-    {% if role in ["System Administrator","Doctor","Researcher"] %}
-    <li>
-        <a href="/druginfo">
-            <i class="fa-solid fa-capsules"></i> Drug DB
-        </a>
-    </li>
-    {% endif %}
+        {% if role in ["System Administrator","Doctor","Researcher"] %}
 
-    {% if role == "System Administrator" %}
-    <li>
-        <a href="/admin">
-            <i class="fa-solid fa-gears"></i> Admin
-        </a>
-    </li>
-    {% endif %}
+        <li>
+          <a href="/druginfo"> <i class="fa-solid fa-capsules"></i> Drug DB </a>
+        </li>
 
-</ul>
+        {% endif %} {% if role == "System Administrator" %}
+
+        <li>
+          <a href="/admin"> <i class="fa-solid fa-gears"></i> Admin </a>
+        </li>
+
+        {% endif %}
+      </ul>
+
       <div class="user">
         <div class="user-info">
           <h3>{{ fullname }}</h3>
@@ -297,20 +500,25 @@
     <div class="container">
       <div class="welcome">
         <h1>Welcome, {{ fullname }} 👋</h1>
+
         <p>
-          Role : <b>{{ role }}</b>
+          Role :
+          <b>{{ role }}</b>
 
-          <br />
+          <br /><br />
 
-          Department : <b>{{ department }}</b>
+          Department :
+          <b>{{ department }}</b>
 
-          <br />
+          <br /><br />
 
-          Email : <b>{{ email }}</b>
+          Email :
+          <b>{{ email }}</b>
 
-          <br />
+          <br /><br />
 
-          Date : <span id="today"></span>
+          Date :
+          <span id="today"></span>
         </p>
       </div>
 
@@ -347,114 +555,89 @@
           <p>Drug Rules</p>
         </div>
       </div>
-      <!-- ===================== QUICK ACTIONS ===================== -->
-
-      <h2 style="margin-top: 50px; margin-bottom: 25px; color: #0f172a">
-        Quick Actions
-      </h2>
+      <h2 class="section-title">Quick Actions</h2>
 
       <div class="cards">
-        <a href="/" style="text-decoration: none">
+        <a href="/" class="action-card">
           <div class="card">
             <i class="fa-solid fa-user-doctor"></i>
 
             <h3>Patient Analysis</h3>
 
-            <p>Analyze a new patient's pharmacogenomic profile.</p>
+            <p>Analyze a patient's pharmacogenomic profile.</p>
           </div>
         </a>
 
-        <a href="/history" style="text-decoration: none">
+        <a href="/history" class="action-card">
           <div class="card">
             <i class="fa-solid fa-clock-rotate-left"></i>
 
             <h3>Patient History</h3>
 
-            <p>View previous pharmacogenomic analyses.</p>
+            <p>View previous patient analyses.</p>
           </div>
         </a>
 
-     {% if role == "System Administrator" %}
-<a href="/admin" style="text-decoration:none">
+        {% if role=="System Administrator" %}
 
-<div class="card">
+        <a href="/admin" class="action-card">
+          <div class="card">
+            <i class="fa-solid fa-gears"></i>
 
-<i class="fa-solid fa-gears"></i>
+            <h3>Admin Panel</h3>
 
-<h3>Admin Panel</h3>
+            <p>Manage users, diseases and drugs.</p>
+          </div>
+        </a>
 
-<p>Manage diseases, genes, drugs and users.</p>
+        {% endif %} {% if role in ["System Administrator","Doctor","Researcher"]
+        %}
 
-</div>
+        <a href="/druginfo" class="action-card">
+          <div class="card">
+            <i class="fa-solid fa-capsules"></i>
 
-</a>
-{% endif %}
+            <h3>Drug Knowledge Base</h3>
 
-       {% if role in ["System Administrator","Doctor","Researcher"] %}
-<a href="/druginfo" style="text-decoration:none">
+            <p>Browse pharmacogenomics drug information.</p>
+          </div>
+        </a>
 
-<div class="card">
-
-<i class="fa-solid fa-capsules"></i>
-
-<h3>Drug Knowledge Base</h3>
-
-<p>Browse neuroscience drug information.</p>
-
-</div>
-
-</a>
-{% endif %}
-</div>
-      <!-- ===================== SYSTEM STATUS ===================== -->
-
-      <h2 style="margin-top: 60px; margin-bottom: 25px; color: #0f172a">
-        System Status
-      </h2>
+        {% endif %}
+      </div>
+      <h2 class="section-title">System Status</h2>
 
       <div class="cards">
         <div class="card">
           <i class="fa-solid fa-circle-check" style="color: #16a34a"></i>
-
           <h3>Flask Server</h3>
-
           <p>Running</p>
         </div>
 
         <div class="card">
           <i class="fa-solid fa-database" style="color: #2563eb"></i>
-
           <h3>CSV Database</h3>
-
           <p>Connected</p>
         </div>
 
         <div class="card">
           <i class="fa-solid fa-user-shield" style="color: #f59e0b"></i>
-
           <h3>Logged User</h3>
-
           <p>{{ role }}</p>
         </div>
 
         <div class="card">
           <i class="fa-solid fa-file-medical" style="color: #7c3aed"></i>
-
           <h3>Reports</h3>
-
           <p>Ready to Generate</p>
         </div>
       </div>
-      <!-- ===================== RECENT ACTIVITY ===================== -->
+      <h2 class="section-title">Recent Activity</h2>
 
-      <h2 style="margin-top: 60px; margin-bottom: 25px; color: #0f172a">
-        Recent Activity
-      </h2>
-
-      <div class="card" style="text-align: left">
-        <table style="width: 100%; border-collapse: collapse">
-          <tr style="background: #2563eb; color: white">
-            <th style="padding: 15px">Activity</th>
+      <div class="table-container">
+        <table class="activity-table">
+          <tr>
+            <th>Activity</th>
 
             <th>Date</th>
 
@@ -462,47 +645,42 @@
           </tr>
 
           <tr>
-            <td style="padding: 15px">User Login</td>
+            <td>User Login</td>
 
             <td>Today</td>
 
-            <td style="color: green">Success</td>
+            <td style="color: #16a34a; font-weight: 600">Success</td>
           </tr>
 
           <tr>
-            <td style="padding: 15px">Drug Database Loaded</td>
+            <td>Drug Database Loaded</td>
 
             <td>Today</td>
 
-            <td style="color: green">Completed</td>
+            <td style="color: #16a34a; font-weight: 600">Completed</td>
           </tr>
 
           <tr>
-            <td style="padding: 15px">Gene Database Loaded</td>
+            <td>Gene Database Loaded</td>
 
             <td>Today</td>
 
-            <td style="color: green">Completed</td>
+            <td style="color: #16a34a; font-weight: 600">Completed</td>
           </tr>
 
           <tr>
-            <td style="padding: 15px">System Ready</td>
+            <td>System Ready</td>
 
             <td>Today</td>
 
-            <td style="color: green">Running</td>
+            <td style="color: #16a34a; font-weight: 600">Running</td>
           </tr>
         </table>
       </div>
+      <h2 class="section-title">About NeuroPGx Advisor</h2>
 
-      <!-- ===================== ABOUT PROJECT ===================== -->
-
-      <h2 style="margin-top: 60px; margin-bottom: 25px; color: #0f172a">
-        About NeuroPGx Advisor
-      </h2>
-
-      <div class="card" style="text-align: left">
-        <p style="line-height: 2; font-size: 16px">
+      <div class="about-card">
+        <p>
           <b>NeuroPGx Advisor</b> is an AI-assisted Clinical Decision Support
           System developed for Pharmacogenomics-based personalized treatment
           recommendation in neurological and psychiatric disorders.
@@ -526,7 +704,7 @@
 
           <br /><br />
 
-          This project is developed using
+          Developed using
 
           <b>Python</b>,
 
@@ -543,18 +721,8 @@
           <b>CSV Knowledge Bases</b>.
         </p>
       </div>
-
-      <!-- ===================== FOOTER ===================== -->
-
-      <footer style="margin-top: 60px">
-        <div
-          style="
-            text-align: center;
-            padding: 25px;
-            background: #0f172a;
-            color: white;
-          "
-        >
+      <footer>
+        <div class="footer">
           <h2>
             <i class="fa-solid fa-dna"></i>
 
@@ -563,21 +731,27 @@
 
           <p>Clinical Decision Support System for Precision Medicine</p>
 
-          <p><strong>Developed By:</strong>Harini Udhayaprakash</p>
+          <p>
+            <strong>Developed By :</strong>
 
-          <p>B.Tech BioTechnology</p>
+            Harini Udhayaprakash
+          </p>
+
+          <p>B.Tech Biotechnology</p>
 
           <p>
             <i class="fa-solid fa-envelope"></i>
+
             hariniudhayaprakash2717@gmail.com
           </p>
 
           <p>© 2026 All Rights Reserved</p>
         </div>
       </footer>
+      <script>
+        document.getElementById("today").innerHTML =
+          new Date().toLocaleString();
+      </script>
     </div>
-    <script>
-      document.getElementById("today").innerHTML = new Date().toLocaleString();
-    </script>
   </body>
 </html>
