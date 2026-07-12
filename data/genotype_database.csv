@@ -1,0 +1,92 @@
+Gene,Genotype,Phenotype,EnzymeActivity,ClinicalSignificance
+CYP2D6,*1/*1,Normal Metabolizer,Normal,Standard metabolism
+CYP2D6,*1/*2,Normal Metabolizer,Normal,Standard metabolism
+CYP2D6,*1/*4,Intermediate Metabolizer,Reduced,Dose adjustment may be required
+CYP2D6,*2/*2,Normal Metabolizer,Normal,Standard metabolism
+CYP2D6,*2/*4,Intermediate Metabolizer,Reduced,Monitor therapy
+CYP2D6,*4/*4,Poor Metabolizer,None,High risk of adverse drug reactions
+
+CYP2C19,*1/*1,Normal Metabolizer,Normal,Standard metabolism
+CYP2C19,*1/*2,Intermediate Metabolizer,Reduced,Monitor therapy
+CYP2C19,*1/*3,Intermediate Metabolizer,Reduced,Monitor therapy
+CYP2C19,*2/*2,Poor Metabolizer,None,Reduced drug metabolism
+CYP2C19,*2/*3,Poor Metabolizer,None,Reduced drug metabolism
+CYP2C19,*3/*3,Poor Metabolizer,None,Reduced drug metabolism
+
+CYP3A4,*1/*1,Normal Metabolizer,Normal,Standard metabolism
+CYP3A4,*1/*22,Intermediate Metabolizer,Reduced,Monitor therapy
+CYP3A4,*22/*22,Poor Metabolizer,None,Reduced metabolism
+
+CYP3A5,*1/*1,Expressor,High,Normal enzyme activity
+CYP3A5,*1/*3,Intermediate Expressor,Reduced,Reduced enzyme activity
+CYP3A5,*3/*3,Non Expressor,None,Minimal enzyme activity
+
+HLA-B*15:02,Positive,High Risk,N/A,Avoid Carbamazepine
+HLA-B*15:02,Negative,Low Risk,N/A,Standard prescribing
+
+HLA-A*31:01,Positive,High Risk,N/A,Risk of hypersensitivity
+HLA-A*31:01,Negative,Low Risk,N/A,Standard prescribing
+
+COMT,High Activity,High Activity,High,Rapid dopamine metabolism
+COMT,Normal Activity,Normal Activity,Normal,Standard dopamine metabolism
+COMT,Low Activity,Low Activity,Low,Reduced dopamine metabolism
+
+DRD2,Normal,Normal Response,Normal,Standard receptor response
+DRD2,Reduced,Reduced Response,Reduced,Reduced receptor sensitivity
+
+APOE,E2/E2,Low Risk,Normal,Lower Alzheimer's disease risk
+APOE,E2/E3,Low Risk,Normal,Lower Alzheimer's disease risk
+APOE,E3/E3,Average Risk,Normal,Average Alzheimer's disease risk
+APOE,E3/E4,High Risk,Normal,Increased Alzheimer's disease risk
+APOE,E4/E4,Very High Risk,Normal,Highest Alzheimer's disease risk
+
+ABCB1,Normal,Normal Transport,Normal,Normal drug transport
+ABCB1,Reduced,Reduced Transport,Reduced,Reduced blood brain barrier transport
+
+SLC6A4,Long/Long,Normal Response,Normal,Good SSRI response
+SLC6A4,Long/Short,Intermediate Response,Reduced,Moderate SSRI response
+SLC6A4,Short/Short,Poor Response,Low,Reduced SSRI response
+
+BDNF,Val/Val,Normal Response,Normal,Good antidepressant response
+BDNF,Val/Met,Intermediate Response,Reduced,Moderate response
+BDNF,Met/Met,Poor Response,Low,Reduced neuroplasticity
+
+MAOA,High Activity,High Activity,High,Fast monoamine degradation
+MAOA,Low Activity,Low Activity,Low,Slow monoamine degradation
+
+TPH2,Normal,Normal Response,Normal,Standard serotonin synthesis
+TPH2,Variant,Reduced Response,Reduced,Reduced serotonin production
+
+CACNA1C,Normal,Normal Response,Normal,Standard calcium channel function
+CACNA1C,Variant,Reduced Response,Reduced,Associated with bipolar disorder
+
+ANK3,Normal,Normal Response,Normal,Standard neuronal function
+ANK3,Variant,Reduced Response,Reduced,Associated with bipolar disorder
+
+SCN1A,Normal,Normal Response,Normal,Standard anticonvulsant response
+SCN1A,Variant,Reduced Response,Reduced,Dose adjustment may be required
+
+SCN2A,Normal,Normal Response,Normal,Standard seizure control
+SCN2A,Variant,Reduced Response,Reduced,Reduced anticonvulsant response
+
+GRIN2B,Normal,Normal Response,Normal,Standard NMDA receptor response
+GRIN2B,Variant,Reduced Response,Reduced,Altered cognitive response
+
+GABRA1,Normal,Normal Response,Normal,Standard GABA receptor response
+GABRA1,Variant,Reduced Response,Reduced,Reduced benzodiazepine response
+
+OPRM1,AA,Normal Response,Normal,Standard opioid response
+OPRM1,AG,Intermediate Response,Reduced,Reduced opioid sensitivity
+OPRM1,GG,Poor Response,Low,Reduced analgesic response
+
+CHRNA4,Normal,Normal Response,Normal,Standard ADHD medication response
+CHRNA4,Variant,Reduced Response,Reduced,Altered ADHD medication response
+
+HLA-DRB1,Positive,High Risk,N/A,Increased autoimmune susceptibility
+HLA-DRB1,Negative,Low Risk,N/A,Standard autoimmune risk
+
+SOD1,Normal,Normal Response,Normal,Standard ALS progression
+SOD1,Variant,High Risk,Reduced,Associated with familial ALS
+
+MAPT,Normal,Normal Response,Normal,Standard tau function
+MAPT,Variant,High Risk,Reduced,Associated with frontotemporal dementia

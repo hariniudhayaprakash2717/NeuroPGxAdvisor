@@ -1,0 +1,26 @@
+Gene,GeneName,Function,AssociatedDrugs,AssociatedDiseases,ClinicalImportance
+CYP2D6,Cytochrome P450 2D6,Metabolizes antidepressants antipsychotics opioids and ADHD medications,Fluoxetine;Paroxetine;Risperidone;Aripiprazole;Atomoxetine;Tramadol,Depression;Schizophrenia;Bipolar Disorder;ADHD;Neuropathic Pain;Migraine;Huntington's Disease,Determines drug metabolism dosage adjustment and adverse drug reactions
+CYP2C19,Cytochrome P450 2C19,Metabolizes SSRIs benzodiazepines and several neurological drugs,Escitalopram;Sertraline;Diazepam;Lorazepam,Depression;Anxiety;Insomnia;Panic Disorder,Determines antidepressant metabolism and treatment response
+CYP3A4,Cytochrome P450 3A4,Metabolizes many neurological medications,Quetiapine;Carbamazepine;Diazepam,Schizophrenia;Epilepsy;Insomnia,Major drug metabolizing enzyme
+CYP3A5,Cytochrome P450 3A5,Metabolizes selected neurological medications,Carbamazepine;Tacrolimus,Epilepsy;Multiple Sclerosis,Influences drug clearance
+HLA-B*15:02,Human Leukocyte Antigen B,Immune response gene associated with severe skin reactions,Carbamazepine;Oxcarbazepine;Phenytoin,Epilepsy,Prevents Stevens-Johnson Syndrome
+HLA-A*31:01,Human Leukocyte Antigen A,Associated with carbamazepine hypersensitivity,Carbamazepine,Epilepsy,Identifies hypersensitivity risk
+COMT,Catechol-O-Methyltransferase,Dopamine metabolism,Levodopa;Entacapone,Parkinson's Disease,Determines dopamine metabolism
+DRD2,Dopamine Receptor D2,Dopamine receptor involved in movement and psychiatric disorders,Risperidone;Aripiprazole;Levodopa,Schizophrenia;Parkinson's Disease,Influences dopamine receptor sensitivity
+APOE,Apolipoprotein E,Lipid transport and Alzheimer's risk,Donepezil;Memantine,Alzheimer's Disease;Lewy Body Dementia,Determines Alzheimer's disease progression
+ABCB1,ATP Binding Cassette B1,Drug transporter across blood brain barrier,Escitalopram;Paroxetine,Depression,Influences CNS drug transport
+SLC6A4,Serotonin Transporter,Controls serotonin reuptake,Sertraline;Fluoxetine;Escitalopram,Depression;Anxiety;Panic Disorder;OCD,Influences SSRI response
+BDNF,Brain Derived Neurotrophic Factor,Supports neuronal survival and neuroplasticity,SSRIs,Depression,Associated with antidepressant response
+MAOA,Monoamine Oxidase A,Degrades serotonin dopamine and norepinephrine,SSRIs;SNRIs,Depression;Anxiety,Influences neurotransmitter metabolism
+TPH2,Tryptophan Hydroxylase 2,Serotonin synthesis enzyme,SSRIs,Depression,Influences serotonin production
+CACNA1C,Calcium Voltage-Gated Channel Alpha1C,Neuronal calcium channel,Lithium;Aripiprazole,Bipolar Disorder,Associated with bipolar susceptibility
+ANK3,Ankyrin 3,Neuronal membrane stability,Lithium,Bipolar Disorder,Associated with mood stabilization
+SCN1A,Sodium Channel Alpha 1,Voltage gated sodium channel,Phenytoin;Carbamazepine;Lamotrigine,Epilepsy,Influences antiepileptic response
+SCN2A,Sodium Channel Alpha 2,Neuronal sodium channel,Lamotrigine;Phenytoin,Epilepsy,Associated with seizure control
+GRIN2B,NMDA Receptor Subunit,Cognitive signaling receptor,Memantine,Alzheimer's Disease,Influences cognitive response
+GABRA1,GABA Receptor Alpha 1,Major inhibitory neurotransmitter receptor,Diazepam;Lorazepam,Epilepsy;Insomnia,Determines benzodiazepine response
+OPRM1,Opioid Receptor Mu 1,Pain modulation receptor,Tramadol;Morphine,Neuropathic Pain,Determines opioid response
+CHRNA4,Nicotinic Acetylcholine Receptor Alpha4,Attention and cognition receptor,Atomoxetine;Methylphenidate,ADHD,Influences ADHD medication response
+HLA-DRB1,Human Leukocyte Antigen DRB1,Immune response gene,Interferon beta,Multiple Sclerosis,Associated with autoimmune susceptibility
+SOD1,Superoxide Dismutase 1,Antioxidant enzyme,Riluzole,Amyotrophic Lateral Sclerosis,Associated with ALS progression
+MAPT,Microtubule Associated Protein Tau,Tau protein regulation,Donepezil;Memantine,Frontotemporal Dementia,Associated with tau pathology

@@ -1,0 +1,100 @@
+Disease,Gene,Phenotype,Drug,Recommendation,AlternativeDrug,Reason,EvidenceLevel
+Depression,CYP2D6,Normal Metabolizer,Fluoxetine,Standard Dose,nan,Normal CYP2D6 metabolism,High
+Depression,CYP2D6,Intermediate Metabolizer,Fluoxetine,Reduce Dose,Escitalopram,Reduced CYP2D6 metabolism,High
+Depression,CYP2D6,Poor Metabolizer,Fluoxetine,Avoid,Escitalopram,High plasma concentration and adverse effect risk,High
+Depression,CYP2C19,Normal Metabolizer,Escitalopram,Standard Dose,,Normal CYP2C19 metabolism,High
+Depression,CYP2C19,Intermediate Metabolizer,Escitalopram,Reduce Dose,Sertraline,Reduced CYP2C19 metabolism,Moderate
+Depression,CYP2C19,Poor Metabolizer,Escitalopram,Avoid,Sertraline,Drug accumulation risk,High
+Depression,SLC6A4,Normal Response,Sertraline,Standard Dose,,Expected SSRI response,Moderate
+Depression,SLC6A4,Intermediate Response,Sertraline,Increase Monitoring,Escitalopram,Variable SSRI response,Moderate
+Depression,SLC6A4,Poor Response,Sertraline,Consider Alternative,Duloxetine,Poor serotonin transporter response,Moderate
+Depression,BDNF,Normal Response,Fluoxetine,Standard Dose,,Normal neuroplasticity,Low
+Depression,BDNF,Intermediate Response,Fluoxetine,Monitor Therapy,Sertraline,Moderate antidepressant response,Low
+Depression,BDNF,Poor Response,Fluoxetine,Consider Alternative,Venlafaxine,Reduced neuroplasticity response,Low
+Depression,ABCB1,Normal Transport,Escitalopram,Standard Dose,,Normal blood-brain barrier transport,Moderate
+Depression,ABCB1,Reduced Transport,Escitalopram,Increase Monitoring,Sertraline,Reduced CNS drug transport,Moderate
+Anxiety,CYP2C19,Normal Metabolizer,Sertraline,Standard Dose,,Normal metabolism,Moderate
+Anxiety,CYP2C19,Intermediate Metabolizer,Sertraline,Reduce Dose,Escitalopram,Reduced metabolism,Moderate
+Anxiety,CYP2C19,Poor Metabolizer,Sertraline,Reduce Dose,Escitalopram,Slow metabolism,Moderate
+Anxiety,SLC6A4,Normal Response,Escitalopram,Standard Dose,,Good SSRI response,Moderate
+Anxiety,SLC6A4,Intermediate Response,Escitalopram,Monitor Therapy,Sertraline,Variable SSRI response,Moderate
+Anxiety,SLC6A4,Poor Response,Escitalopram,Consider Alternative,Duloxetine,Poor serotonin transporter response,Moderate
+Anxiety,MAOA,High Activity,Sertraline,Standard Dose,,Normal monoamine metabolism,Low
+Anxiety,MAOA,Low Activity,Sertraline,Increase Monitoring,Escitalopram,Reduced monoamine degradation,Low
+Panic Disorder,CYP2C19,Normal Metabolizer,Escitalopram,Standard Dose,,Normal metabolism,Moderate
+Panic Disorder,CYP2C19,Intermediate Metabolizer,Escitalopram,Reduce Dose,Sertraline,Reduced metabolism,Moderate
+Panic Disorder,CYP2C19,Poor Metabolizer,Escitalopram,Avoid,Sertraline,Drug accumulation risk,High
+Obsessive Compulsive Disorder,CYP2D6,Normal Metabolizer,Fluvoxamine,Standard Dose,,Normal metabolism,Moderate
+Obsessive Compulsive Disorder,CYP2D6,Intermediate Metabolizer,Fluvoxamine,Reduce Dose,Sertraline,Reduced metabolism,Moderate
+Obsessive Compulsive Disorder,CYP2D6,Poor Metabolizer,Fluvoxamine,Avoid,Sertraline,High plasma concentration risk,High
+Obsessive Compulsive Disorder,SLC6A4,Normal Response,Sertraline,Standard Dose,,Expected SSRI response,Moderate
+Obsessive Compulsive Disorder,SLC6A4,Intermediate Response,Sertraline,Monitor Therapy,Fluvoxamine,Variable SSRI response,Moderate
+Obsessive Compulsive Disorder,SLC6A4,Poor Response,Sertraline,Consider Alternative,Clomipramine,Poor serotonin transporter response,Moderate
+Schizophrenia,CYP2D6,Normal Metabolizer,Risperidone,Standard Dose,,Normal CYP2D6 metabolism,High
+Schizophrenia,CYP2D6,Intermediate Metabolizer,Risperidone,Reduce Dose,Aripiprazole,Reduced CYP2D6 metabolism,High
+Schizophrenia,CYP2D6,Poor Metabolizer,Risperidone,Avoid,Aripiprazole,High plasma concentration risk,High
+Schizophrenia,DRD2,Normal Response,Aripiprazole,Standard Dose,,Normal dopamine receptor response,Moderate
+Schizophrenia,DRD2,Reduced Response,Aripiprazole,Increase Monitoring,Olanzapine,Reduced dopamine receptor sensitivity,Moderate
+Bipolar Disorder,CYP2D6,Normal Metabolizer,Aripiprazole,Standard Dose,,Normal metabolism,Moderate
+Bipolar Disorder,CYP2D6,Intermediate Metabolizer,Aripiprazole,Reduce Dose,Olanzapine,Reduced metabolism,Moderate
+Bipolar Disorder,CYP2D6,Poor Metabolizer,Aripiprazole,Avoid,Olanzapine,High plasma concentration,High
+Bipolar Disorder,CACNA1C,Normal Response,Lithium,Standard Dose,,Normal calcium channel function,Moderate
+Bipolar Disorder,CACNA1C,Reduced Response,Lithium,Monitor Therapy,Valproate,Altered calcium signaling,Moderate
+Bipolar Disorder,ANK3,Normal Response,Lithium,Standard Dose,,Normal neuronal stability,Moderate
+Bipolar Disorder,ANK3,Reduced Response,Lithium,Increase Monitoring,Valproate,Reduced mood stabilization response,Moderate
+Epilepsy,HLA-B*15:02,High Risk,Carbamazepine,Avoid,Levetiracetam,Risk of Stevens-Johnson Syndrome,High
+Epilepsy,HLA-B*15:02,Low Risk,Carbamazepine,Standard Dose,,Safe to prescribe,High
+Epilepsy,HLA-A*31:01,High Risk,Carbamazepine,Avoid,Levetiracetam,Risk of hypersensitivity reactions,High
+Epilepsy,HLA-A*31:01,Low Risk,Carbamazepine,Standard Dose,,Safe to prescribe,High
+Epilepsy,SCN1A,Normal Response,Phenytoin,Standard Dose,,Expected anticonvulsant response,Moderate
+Epilepsy,SCN1A,Reduced Response,Phenytoin,Increase Monitoring,Lamotrigine,Reduced sodium channel response,Moderate
+Epilepsy,SCN2A,Normal Response,Lamotrigine,Standard Dose,,Expected seizure control,Moderate
+Epilepsy,SCN2A,Reduced Response,Lamotrigine,Increase Monitoring,Levetiracetam,Reduced anticonvulsant response,Moderate
+Parkinson's Disease,COMT,High Activity,Levodopa,Increase Dose,,Rapid dopamine metabolism,Moderate
+Parkinson's Disease,COMT,Normal Activity,Levodopa,Standard Dose,,Normal dopamine metabolism,Moderate
+Parkinson's Disease,COMT,Low Activity,Levodopa,Reduce Dose,,Slow dopamine metabolism,Moderate
+Parkinson's Disease,DRD2,Normal Response,Ropinirole,Standard Dose,,Normal dopamine receptor response,Moderate
+Parkinson's Disease,DRD2,Reduced Response,Ropinirole,Increase Monitoring,Pramipexole,Reduced receptor sensitivity,Moderate
+Alzheimer's Disease,APOE,Low Risk,Donepezil,Standard Dose,,Standard Alzheimer's treatment,Moderate
+Alzheimer's Disease,APOE,Average Risk,Donepezil,Standard Dose,,Expected therapeutic response,Moderate
+Alzheimer's Disease,APOE,High Risk,Donepezil,Use With Monitoring,Memantine,Increased disease progression risk,Moderate
+Alzheimer's Disease,APOE,Very High Risk,Donepezil,Use With Monitoring,Memantine,High genetic risk for progression,High
+Alzheimer's Disease,GRIN2B,Normal Response,Memantine,Standard Dose,,Normal NMDA receptor response,Moderate
+Alzheimer's Disease,GRIN2B,Reduced Response,Memantine,Increase Monitoring,Donepezil,Altered NMDA receptor activity,Moderate
+Attention Deficit Hyperactivity Disorder,CYP2D6,Normal Metabolizer,Atomoxetine,Standard Dose,,Normal CYP2D6 metabolism,High
+Attention Deficit Hyperactivity Disorder,CYP2D6,Intermediate Metabolizer,Atomoxetine,Reduce Dose,Methylphenidate,Reduced metabolism,High
+Attention Deficit Hyperactivity Disorder,CYP2D6,Poor Metabolizer,Atomoxetine,Avoid,Methylphenidate,High plasma concentration risk,High
+Attention Deficit Hyperactivity Disorder,CHRNA4,Normal Response,Methylphenidate,Standard Dose,,Normal nicotinic receptor response,Moderate
+Attention Deficit Hyperactivity Disorder,CHRNA4,Reduced Response,Methylphenidate,Increase Monitoring,Atomoxetine,Reduced receptor sensitivity,Moderate
+Autism Spectrum Disorder,CYP2D6,Normal Metabolizer,Risperidone,Standard Dose,,Normal metabolism,Moderate
+Autism Spectrum Disorder,CYP2D6,Intermediate Metabolizer,Risperidone,Reduce Dose,Aripiprazole,Reduced metabolism,Moderate
+Autism Spectrum Disorder,CYP2D6,Poor Metabolizer,Risperidone,Avoid,Aripiprazole,High plasma concentration risk,High
+Migraine,CYP2D6,Normal Metabolizer,Amitriptyline,Standard Dose,,Normal metabolism,Moderate
+Migraine,CYP2D6,Intermediate Metabolizer,Amitriptyline,Reduce Dose,Topiramate,Reduced metabolism,Moderate
+Migraine,CYP2D6,Poor Metabolizer,Amitriptyline,Avoid,Topiramate,Drug accumulation risk,High
+Neuropathic Pain,CYP2D6,Normal Metabolizer,Tramadol,Standard Dose,,Normal conversion to active metabolite,High
+Neuropathic Pain,CYP2D6,Intermediate Metabolizer,Tramadol,Increase Monitoring,Morphine,Reduced analgesic response,High
+Neuropathic Pain,CYP2D6,Poor Metabolizer,Tramadol,Avoid,Morphine,Insufficient analgesic effect,High
+Neuropathic Pain,OPRM1,Normal Response,Morphine,Standard Dose,,Expected opioid response,Moderate
+Neuropathic Pain,Intermediate Response,Morphine,Increase Monitoring,Pregabalin,Reduced opioid sensitivity,Moderate,
+Neuropathic Pain,Poor Response,Morphine,Consider Alternative,Pregabalin,Poor opioid response,Moderate,
+Insomnia,CYP2C19,Normal Metabolizer,Diazepam,Standard Dose,,Normal metabolism,Moderate
+Insomnia,CYP2C19,Intermediate Metabolizer,Diazepam,Reduce Dose,Lorazepam,Reduced metabolism,Moderate
+Insomnia,CYP2C19,Poor Metabolizer,Diazepam,Avoid,Lorazepam,Drug accumulation risk,High
+Insomnia,GABRA1,Normal Response,Lorazepam,Standard Dose,,Expected GABA receptor response,Moderate
+Insomnia,GABRA1,Reduced Response,Lorazepam,Increase Monitoring,Diazepam,Reduced receptor response,Moderate
+Multiple Sclerosis,HLA-DRB1,High Risk,Interferon beta,Use With Monitoring,Glatiramer Acetate,Increased autoimmune susceptibility,Moderate
+Multiple Sclerosis,HLA-DRB1,Low Risk,Interferon beta,Standard Dose,,Expected treatment response,Moderate
+Huntington's Disease,CYP2D6,Normal Metabolizer,Tetrabenazine,Standard Dose,,Normal metabolism,Moderate
+Huntington's Disease,CYP2D6,Intermediate Metabolizer,Tetrabenazine,Reduce Dose,Deutetrabenazine,Reduced metabolism,Moderate
+Huntington's Disease,CYP2D6,Poor Metabolizer,Tetrabenazine,Avoid,Deutetrabenazine,High plasma concentration risk,High
+Amyotrophic Lateral Sclerosis,SOD1,Normal Response,Riluzole,Standard Dose,,Expected therapeutic response,Moderate
+Amyotrophic Lateral Sclerosis,SOD1,High Risk,Riluzole,Increase Monitoring,Edaravone,Genetic risk for rapid progression,Moderate
+Essential Tremor,CYP2D6,Normal Metabolizer,Propranolol,Standard Dose,,Normal metabolism,Moderate
+Essential Tremor,CYP2D6,Intermediate Metabolizer,Propranolol,Reduce Dose,Primidone,Reduced metabolism,Moderate
+Essential Tremor,CYP2D6,Poor Metabolizer,Propranolol,Avoid,Primidone,Drug accumulation risk,High
+Lewy Body Dementia,APOE,Low Risk,Donepezil,Standard Dose,,Expected treatment response,Moderate
+Lewy Body Dementia,APOE,Average Risk,Donepezil,Standard Dose,,Standard treatment response,Moderate
+Lewy Body Dementia,APOE,High Risk,Donepezil,Use With Monitoring,Memantine,Increased disease progression risk,Moderate
+Frontotemporal Dementia,MAPT,Normal Response,Donepezil,Standard Dose,,Expected treatment response,Moderate
+Frontotemporal Dementia,MAPT,High Risk,Donepezil,Increase Monitoring,Memantine,Tau pathology associated with disease progression,Moderate

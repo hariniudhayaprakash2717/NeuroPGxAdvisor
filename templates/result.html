@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Analysis Result</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <div class="logo">
+
+        <i class="fa-solid fa-dna"></i>
+
+        NeuroPGx Advisor
+
+    </div>
+
+    <ul class="nav-links">
+
+        <li><a href="/">Home</a></li>
+
+    </ul>
+
+</nav>
+
+<section class="form-section">
+
+<div class="glass-card">
+
+<h2>
+
+<i class="fa-solid fa-microscope"></i>
+
+Analysis Report
+
+</h2>
+
+<div class="input-grid">
+
+<div class="input-box">
+
+<label>Patient Name</label>
+
+<input type="text"
+value="{{ patient_name }}"
+readonly>
+
+</div>
+
+<div class="input-box">
+
+<label>Disease</label>
+
+<input type="text"
+value="{{ disease }}"
+readonly>
+
+</div>
+
+<div class="input-box">
+
+<label>Gene</label>
+
+<input type="text"
+value="{{ gene }}"
+readonly>
+
+</div>
+
+<div class="input-box">
+
+<label>Genotype</label>
+
+<input type="text"
+value="{{ genotype }}"
+readonly>
+
+</div>
+
+<div class="input-box">
+
+<label>Phenotype</label>
+
+<input type="text"
+value="{{ phenotype }}"
+readonly>
+
+</div>
+
+<div class="input-box">
+
+<label>Recommended Drug</label>
+
+<input type="text"
+value="{{ drug }}"
+readonly>
+
+</div>
+
+<div class="input-box">
+
+<label>Recommendation</label>
+
+<input type="text"
+value="{{ recommendation }}"
+readonly>
+
+</div>
+
+<div class="input-box">
+
+<label>Alternative Drug</label>
+
+<input type="text"
+value="{{ alternative }}"
+readonly>
+
+</div>
+
+<div class="input-box">
+
+<label>Evidence Level</label>
+
+<input type="text"
+value="{{ evidence }}"
+readonly>
+
+</div>
+
+<div class="input-box"
+style="grid-column:1/3;">
+
+<label>Clinical Reason</label>
+
+<textarea
+rows="5"
+readonly>{{ reason }}</textarea>
+
+</div>
+
+</div>
+
+<div style="display:flex;
+gap:20px;
+margin-top:40px;
+justify-content:center;">
+
+<a href="/"
+class="predict-btn"
+style="text-decoration:none;
+text-align:center;">
+
+<i class="fa-solid fa-house"></i>
+
+New Analysis
+
+</a>
+
+<a href="{{ url_for('download', patient_name=patient_name) }}"
+class="predict-btn"
+style="text-decoration:none; text-align:center;">
+
+<i class="fa-solid fa-download"></i>
+
+Download Report
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+<div class="footer-content">
+
+<h2>
+
+<i class="fa-solid fa-dna"></i>
+
+NeuroPGx Advisor
+
+</h2>
+
+<p>
+
+Personalized Pharmacogenomics Treatment Recommendation System
+
+</p>
+
+<p>
+
+Developed by <strong>Muthu Murugan</strong>
+
+</p>
+
+</div>
+
+</footer>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+
+</html>

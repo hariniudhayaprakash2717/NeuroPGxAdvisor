@@ -1,0 +1,17 @@
+========================================
+      NeuroPGx Treatment Report
+========================================
+
+Patient Name : Mounika
+Disease      : Migraine
+Gene         : CYP2D6
+Genotype     : *1/*1
+Phenotype    : Normal Metabolizer
+
+Drug Recommendation
+---------------------------
+Drug               : Amitriptyline
+Recommendation     : Standard Dose
+Alternative Drug   : nan
+Reason             : Normal metabolism
+Evidence Level     : Moderate

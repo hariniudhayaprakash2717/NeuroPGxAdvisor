@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Edit Drug</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Poppins,sans-serif;
+}
+
+body{
+    background:#eef4fb;
+}
+
+.container{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    padding:40px 20px;
+}
+
+.card{
+    width:700px;
+    background:white;
+    padding:35px;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+h1{
+    margin-bottom:25px;
+    color:#0f172a;
+}
+
+.form-group{
+    margin-bottom:18px;
+}
+
+label{
+    display:block;
+    margin-bottom:8px;
+    font-weight:600;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:15px;
+}
+
+.buttons{
+    display:flex;
+    gap:15px;
+    margin-top:25px;
+}
+
+.save-btn{
+    background:#2563eb;
+    color:white;
+    padding:12px 25px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:15px;
+}
+
+.back-btn{
+    background:#64748b;
+    color:white;
+    padding:12px 25px;
+    border-radius:8px;
+    text-decoration:none;
+}
+
+.save-btn:hover{
+    background:#1d4ed8;
+}
+
+.back-btn:hover{
+    background:#475569;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="card">
+
+<h1>✏️ Edit Drug</h1>
+
+<form action="/update_drug" method="POST">
+
+<input type="hidden" name="index" value="{{ index }}">
+
+<div class="form-group">
+<label>Disease</label>
+<input type="text" name="disease" value="{{ drug.Disease }}">
+</div>
+
+<div class="form-group">
+<label>Gene</label>
+<input type="text" name="gene" value="{{ drug.Gene }}">
+</div>
+
+<div class="form-group">
+<label>Phenotype</label>
+<input type="text" name="phenotype" value="{{ drug.Phenotype }}">
+</div>
+
+<div class="form-group">
+<label>Drug</label>
+<input type="text" name="drug" value="{{ drug.Drug }}">
+</div>
+
+<div class="form-group">
+<label>Recommendation</label>
+<input type="text" name="recommendation" value="{{ drug.Recommendation }}">
+</div>
+
+<div class="form-group">
+<label>Alternative Drug</label>
+<input type="text" name="alternative" value="{{ drug.AlternativeDrug }}">
+</div>
+
+<div class="form-group">
+<label>Reason</label>
+<input type="text" name="reason" value="{{ drug.Reason }}">
+</div>
+
+<div class="form-group">
+<label>Evidence Level</label>
+<input type="text" name="evidence" value="{{ drug.EvidenceLevel }}">
+</div>
+
+<div class="buttons">
+
+<button class="save-btn" type="submit">
+💾 Save Changes
+</button>
+
+<a href="/druginfo" class="back-btn">
+← Back
+</a>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+</body>
+</html>

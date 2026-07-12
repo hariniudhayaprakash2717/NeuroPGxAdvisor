@@ -1,0 +1,6 @@
+UserID,Username,Password,Role,FullName,Department,Email
+U001,Harini,Harini27,System Administrator,Harini Udhayaprakash,BioTechnology,hariniudhayaprakash2717@gmail.com
+U002,doctor1,doctor123,Doctor,Dr. Priya Sharma,Neurology,priya@hospital.com
+U003,doctor2,doctor456,Doctor,Dr. Arun Kumar,Psychiatry,arun@hospital.com
+U004,research1,research123,Researcher,Ravi Kumar,Genomics,ravi12@lab.com
+U005,student1,student123,Student,Rahul Sharma,Computer Science,rahul@student.com

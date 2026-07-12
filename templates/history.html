@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Patient History | NeuroPGx Advisor</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#eef4fb;
+}
+
+.navbar{
+height:75px;
+background:#0f172a;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:0 40px;
+color:white;
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:15px;
+font-size:28px;
+font-weight:700;
+}
+
+.logo i{
+font-size:34px;
+color:#38bdf8;
+}
+
+.nav-links{
+display:flex;
+gap:25px;
+align-items:center;
+}
+
+.nav-links a{
+color:white;
+text-decoration:none;
+font-weight:500;
+transition:.3s;
+}
+
+.nav-links a:hover{
+color:#38bdf8;
+}
+
+.logout{
+background:#ef4444;
+padding:10px 18px;
+border-radius:8px;
+text-decoration:none;
+color:white;
+font-weight:600;
+}
+
+.logout:hover{
+background:#dc2626;
+}
+
+.container{
+width:94%;
+margin:35px auto;
+}
+
+.welcome-card{
+background:white;
+padding:30px;
+border-radius:18px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+margin-bottom:30px;
+}
+
+.welcome-card h1{
+font-size:34px;
+color:#0f172a;
+margin-bottom:10px;
+}
+
+.welcome-card p{
+font-size:17px;
+color:#64748b;
+}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:25px;
+margin-bottom:35px;
+}
+
+.card{
+background:white;
+padding:28px;
+border-radius:18px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+text-align:center;
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+}
+
+.card i{
+font-size:42px;
+color:#2563eb;
+margin-bottom:15px;
+}
+
+.card h2{
+font-size:38px;
+color:#0f172a;
+margin-bottom:8px;
+}
+
+.card p{
+color:#64748b;
+}
+
+.search-card{
+background:white;
+padding:25px;
+border-radius:18px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+margin-bottom:30px;
+}
+
+.search-card input{
+width:100%;
+padding:15px;
+border-radius:10px;
+border:1px solid #ccc;
+font-size:16px;
+outline:none;
+}
+
+.table-card{
+background:white;
+padding:25px;
+border-radius:18px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+overflow-x:auto;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+th{
+background:#2563eb;
+color:white;
+padding:16px;
+font-size:15px;
+}
+
+td{
+padding:15px;
+border-bottom:1px solid #e5e7eb;
+text-align:center;
+}
+
+tr:hover{
+background:#f8fbff;
+}
+
+.download-btn{
+background:#16a34a;
+color:white;
+padding:8px 14px;
+text-decoration:none;
+border-radius:8px;
+font-size:14px;
+}
+
+.download-btn:hover{
+background:#15803d;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav class="navbar">
+
+<div class="logo">
+
+<i class="fa-solid fa-dna"></i>
+
+<span>NeuroPGx Advisor</span>
+
+</div>
+
+<div class="nav-links">
+
+<a href="/dashboard">Dashboard</a>
+
+<a href="/">Patient Analysis</a>
+
+<a href="/history">History</a>
+
+<a href="/druginfo">Drug DB</a>
+
+<a href="/admin">Admin</a>
+
+<a href="/logout" class="logout">Logout</a>
+
+</div>
+
+</nav>
+
+<div class="container">
+
+<div class="welcome-card">
+
+<h1>Patient History</h1>
+
+<p>
+
+Welcome,
+
+<b>{{ fullname }}</b>
+
+|
+
+Role :
+
+<b>{{ role }}</b>
+
+</p>
+
+</div>
+
+<div class="stats">
+
+<div class="card">
+
+<i class="fa-solid fa-users"></i>
+
+<h2>{{ total_patients }}</h2>
+
+<p>Total Patients</p>
+
+</div>
+
+<div class="card">
+
+<i class="fa-solid fa-file-medical"></i>
+
+<h2>{{ total_patients }}</h2>
+
+<p>Clinical Reports</p>
+
+</div>
+
+<div class="card">
+
+<i class="fa-solid fa-database"></i>
+
+<h2>CSV</h2>
+
+<p>Database</p>
+
+</div>
+
+<div class="card">
+
+<i class="fa-solid fa-circle-check"></i>
+
+<h2>Active</h2>
+
+<p>System Status</p>
+
+</div>
+
+</div>
+
+<div class="search-card">
+
+<input
+type="text"
+id="searchInput"
+placeholder="Search patient by name, disease, gene or drug...">
+
+</div>
+
+<div class="table-card">
+<div class="table-responsive">
+<table id="historyTable">
+
+<thead>
+
+<tr>
+
+<th>Patient</th>
+
+<th>Disease</th>
+
+<th>Gene</th>
+
+<th>Drug</th>
+
+<th>Date</th>
+
+<th>Report</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+  {% if history %}
+
+{% for patient in history %}
+
+<tr>
+
+<td>{{ patient.PatientName }}</td>
+
+<td>{{ patient.Disease }}</td>
+
+<td>{{ patient.Gene }}</td>
+
+<td>{{ patient.Drug }}</td>
+
+<td>{{ patient.DateTime }}</td>
+
+<td>
+
+<a
+href="/download/{{ patient.PatientName }}"
+class="download-btn">
+
+<i class="fa-solid fa-download"></i>
+
+Download
+
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+{% else %}
+
+<tr>
+
+<td colspan="6" style="padding:30px;font-size:18px;">
+
+<i class="fa-solid fa-circle-info"></i>
+
+No patient history available.
+
+</td>
+
+</tr>
+
+{% endif %}
+
+</tbody>
+
+</table>
+</div>
+</div>
+
+<footer style="margin-top:50px;">
+
+<div style="background:#0f172a;color:white;padding:25px;border-radius:15px;text-align:center;">
+
+<h2>
+
+<i class="fa-solid fa-dna"></i>
+
+NeuroPGx Advisor
+
+</h2>
+
+<p style="margin-top:10px;">
+
+Clinical Decision Support System for Precision Medicine
+
+</p>
+
+<p>
+
+Developed by:
+<b>Harini Udhayaprakash</b>
+
+</p>
+
+<p>
+
+Department:
+<b>BioTechnology</b>
+
+</p>
+
+<p>
+
+Email:
+<b>hariniudhayaprakash2717@gmail.com</b>
+
+</p>
+
+<p style="margin-top:10px;">
+
+© 2026 All Rights Reserved
+
+</p>
+
+</div>
+
+</footer>
+<script>
+
+const searchInput = document.getElementById("searchInput");
+
+searchInput.addEventListener("keyup", function(){
+
+let filter = this.value.toLowerCase();
+
+let rows = document.querySelectorAll("#historyTable tbody tr");
+
+rows.forEach(function(row){
+
+let text = row.innerText.toLowerCase();
+
+if(text.includes(filter))
+{
+row.style.display="";
+}
+else
+{
+row.style.display="none";
+}
+
+});
+
+});
+
+</script>
+
+</body>
+
+</html>

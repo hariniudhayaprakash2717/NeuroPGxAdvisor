@@ -1,0 +1,17 @@
+========================================
+      NeuroPGx Treatment Report
+========================================
+
+Patient Name : Ramya
+Disease      : Alzheimer's Disease
+Gene         : APOE
+Genotype     : E2/E2
+Phenotype    : Low Risk
+
+Drug Recommendation
+---------------------------
+Drug               : Donepezil
+Recommendation     : Standard Dose
+Alternative Drug   : nan
+Reason             : Standard Alzheimer's treatment
+Evidence Level     : Moderate

@@ -1,0 +1,17 @@
+========================================
+      NeuroPGx Treatment Report
+========================================
+
+Patient Name : Harini
+Disease      : Depression
+Gene         : SLC6A4
+Genotype     : Long/Long
+Phenotype    : Normal Response
+
+Drug Recommendation
+---------------------------
+Drug               : Sertraline
+Recommendation     : Standard Dose
+Alternative Drug   : nan
+Reason             : Expected SSRI response
+Evidence Level     : Moderate

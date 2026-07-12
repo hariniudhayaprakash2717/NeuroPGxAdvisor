@@ -1,0 +1,583 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Dashboard | NeuroPGx Advisor</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        background: #eef4fb;
+      }
+
+      /* ===================== NAVBAR ===================== */
+
+      .navbar {
+        height: 80px;
+        background: #0f172a;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 40px;
+        color: white;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 26px;
+        font-weight: 700;
+      }
+
+      .logo i {
+        font-size: 34px;
+        color: #38bdf8;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+        list-style: none;
+      }
+
+      .nav-links li {
+        list-style: none;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: white;
+        font-size: 15px;
+        font-weight: 600;
+        transition: 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: #38bdf8;
+      }
+
+      .nav-links i {
+        margin-right: 6px;
+      }
+
+      .user {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .user-info {
+        text-align: right;
+      }
+
+      .user-info h3 {
+        margin: 0;
+        font-size: 16px;
+      }
+
+      .user-info p {
+        margin: 0;
+        font-size: 13px;
+        color: #cbd5e1;
+      }
+
+      .logout {
+        background: #ef4444;
+        padding: 10px 18px;
+        border-radius: 10px;
+        text-decoration: none;
+        color: white;
+        font-weight: 600;
+        transition: 0.3s;
+      }
+
+      .logout:hover {
+        background: #dc2626;
+      }
+
+      /* ===================== CONTAINER ===================== */
+
+      .container {
+        width: 92%;
+        margin: 40px auto;
+      }
+
+      /* ===================== WELCOME ===================== */
+
+      .welcome {
+        background: white;
+        padding: 35px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        margin-bottom: 35px;
+      }
+
+      .welcome h1 {
+        color: #0f172a;
+        font-size: 34px;
+        margin-bottom: 10px;
+      }
+
+      .welcome p {
+        font-size: 18px;
+        color: #64748b;
+        line-height: 1.8;
+      }
+
+      /* ===================== CARDS ===================== */
+
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 25px;
+        margin-bottom: 30px;
+      }
+
+      .card {
+        background: white;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        transition: 0.3s;
+        text-align: center;
+      }
+
+      .card:hover {
+        transform: translateY(-8px);
+      }
+
+      .card i {
+        font-size: 45px;
+        margin-bottom: 18px;
+        color: #2563eb;
+      }
+
+      .card h1 {
+        font-size: 42px;
+        color: #0f172a;
+        margin-bottom: 10px;
+      }
+
+      .card h3 {
+        color: #0f172a;
+        margin-bottom: 10px;
+      }
+
+      .card p {
+        font-size: 17px;
+        color: #64748b;
+        line-height: 1.7;
+      }
+
+      /* ===================== TABLE ===================== */
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      table th {
+        background: #2563eb;
+        color: white;
+        padding: 15px;
+      }
+
+      table td {
+        padding: 15px;
+        border-bottom: 1px solid #ddd;
+      }
+
+      /* ===================== FOOTER ===================== */
+
+      footer {
+        margin-top: 60px;
+      }
+
+      .footer-content {
+        background: #0f172a;
+        color: white;
+        text-align: center;
+        padding: 30px;
+      }
+
+      .footer-content h2 {
+        margin-bottom: 15px;
+      }
+
+      .footer-content p {
+        margin: 8px 0;
+      }
+
+      .footer-content i {
+        color: #38bdf8;
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="navbar">
+      <div class="logo">
+        <i class="fa-solid fa-dna"></i>
+
+        <span>NeuroPGx Dashboard</span>
+      </div>
+      <ul class="nav-links">
+
+    <li>
+        <a href="/dashboard">
+            <i class="fa-solid fa-house"></i> Dashboard
+        </a>
+    </li>
+
+    <li>
+        <a href="/">
+            <i class="fa-solid fa-user-doctor"></i> Analyze
+        </a>
+    </li>
+
+    <li>
+        <a href="/history">
+            <i class="fa-solid fa-clock-rotate-left"></i> History
+        </a>
+    </li>
+
+    {% if role in ["System Administrator","Doctor","Researcher"] %}
+    <li>
+        <a href="/druginfo">
+            <i class="fa-solid fa-capsules"></i> Drug DB
+        </a>
+    </li>
+    {% endif %}
+
+    {% if role == "System Administrator" %}
+    <li>
+        <a href="/admin">
+            <i class="fa-solid fa-gears"></i> Admin
+        </a>
+    </li>
+    {% endif %}
+
+</ul>
+      <div class="user">
+        <div class="user-info">
+          <h3>{{ fullname }}</h3>
+
+          <p>{{ role }}</p>
+        </div>
+
+        <a href="/logout" class="logout">
+          <i class="fa-solid fa-right-from-bracket"></i>
+
+          Logout
+        </a>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="welcome">
+        <h1>Welcome, {{ fullname }} 👋</h1>
+        <p>
+          Role : <b>{{ role }}</b>
+
+          <br />
+
+          Department : <b>{{ department }}</b>
+
+          <br />
+
+          Email : <b>{{ email }}</b>
+
+          <br />
+
+          Date : <span id="today"></span>
+        </p>
+      </div>
+
+      <div class="cards">
+        <div class="card">
+          <i class="fa-solid fa-brain"></i>
+
+          <h1>{{ total_diseases }}</h1>
+
+          <p>Neurological Diseases</p>
+        </div>
+
+        <div class="card">
+          <i class="fa-solid fa-dna"></i>
+
+          <h1>{{ total_genes }}</h1>
+
+          <p>Genes</p>
+        </div>
+
+        <div class="card">
+          <i class="fa-solid fa-vial"></i>
+
+          <h1>{{ total_genotypes }}</h1>
+
+          <p>Genotypes</p>
+        </div>
+
+        <div class="card">
+          <i class="fa-solid fa-capsules"></i>
+
+          <h1>{{ total_drugs }}</h1>
+
+          <p>Drug Rules</p>
+        </div>
+      </div>
+      <!-- ===================== QUICK ACTIONS ===================== -->
+
+      <h2 style="margin-top: 50px; margin-bottom: 25px; color: #0f172a">
+        Quick Actions
+      </h2>
+
+      <div class="cards">
+        <a href="/" style="text-decoration: none">
+          <div class="card">
+            <i class="fa-solid fa-user-doctor"></i>
+
+            <h3>Patient Analysis</h3>
+
+            <p>Analyze a new patient's pharmacogenomic profile.</p>
+          </div>
+        </a>
+
+        <a href="/history" style="text-decoration: none">
+          <div class="card">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+
+            <h3>Patient History</h3>
+
+            <p>View previous pharmacogenomic analyses.</p>
+          </div>
+        </a>
+
+     {% if role == "System Administrator" %}
+<a href="/admin" style="text-decoration:none">
+
+<div class="card">
+
+<i class="fa-solid fa-gears"></i>
+
+<h3>Admin Panel</h3>
+
+<p>Manage diseases, genes, drugs and users.</p>
+
+</div>
+
+</a>
+{% endif %}
+
+       {% if role in ["System Administrator","Doctor","Researcher"] %}
+<a href="/druginfo" style="text-decoration:none">
+
+<div class="card">
+
+<i class="fa-solid fa-capsules"></i>
+
+<h3>Drug Knowledge Base</h3>
+
+<p>Browse neuroscience drug information.</p>
+
+</div>
+
+</a>
+{% endif %}
+</div>
+      <!-- ===================== SYSTEM STATUS ===================== -->
+
+      <h2 style="margin-top: 60px; margin-bottom: 25px; color: #0f172a">
+        System Status
+      </h2>
+
+      <div class="cards">
+        <div class="card">
+          <i class="fa-solid fa-circle-check" style="color: #16a34a"></i>
+
+          <h3>Flask Server</h3>
+
+          <p>Running</p>
+        </div>
+
+        <div class="card">
+          <i class="fa-solid fa-database" style="color: #2563eb"></i>
+
+          <h3>CSV Database</h3>
+
+          <p>Connected</p>
+        </div>
+
+        <div class="card">
+          <i class="fa-solid fa-user-shield" style="color: #f59e0b"></i>
+
+          <h3>Logged User</h3>
+
+          <p>{{ role }}</p>
+        </div>
+
+        <div class="card">
+          <i class="fa-solid fa-file-medical" style="color: #7c3aed"></i>
+
+          <h3>Reports</h3>
+
+          <p>Ready to Generate</p>
+        </div>
+      </div>
+      <!-- ===================== RECENT ACTIVITY ===================== -->
+
+      <h2 style="margin-top: 60px; margin-bottom: 25px; color: #0f172a">
+        Recent Activity
+      </h2>
+
+      <div class="card" style="text-align: left">
+        <table style="width: 100%; border-collapse: collapse">
+          <tr style="background: #2563eb; color: white">
+            <th style="padding: 15px">Activity</th>
+
+            <th>Date</th>
+
+            <th>Status</th>
+          </tr>
+
+          <tr>
+            <td style="padding: 15px">User Login</td>
+
+            <td>Today</td>
+
+            <td style="color: green">Success</td>
+          </tr>
+
+          <tr>
+            <td style="padding: 15px">Drug Database Loaded</td>
+
+            <td>Today</td>
+
+            <td style="color: green">Completed</td>
+          </tr>
+
+          <tr>
+            <td style="padding: 15px">Gene Database Loaded</td>
+
+            <td>Today</td>
+
+            <td style="color: green">Completed</td>
+          </tr>
+
+          <tr>
+            <td style="padding: 15px">System Ready</td>
+
+            <td>Today</td>
+
+            <td style="color: green">Running</td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- ===================== ABOUT PROJECT ===================== -->
+
+      <h2 style="margin-top: 60px; margin-bottom: 25px; color: #0f172a">
+        About NeuroPGx Advisor
+      </h2>
+
+      <div class="card" style="text-align: left">
+        <p style="line-height: 2; font-size: 16px">
+          <b>NeuroPGx Advisor</b> is an AI-assisted Clinical Decision Support
+          System developed for Pharmacogenomics-based personalized treatment
+          recommendation in neurological and psychiatric disorders.
+
+          <br /><br />
+
+          The platform analyzes
+
+          <b>Disease</b>,
+
+          <b>Gene</b>,
+
+          <b>Genotype</b>
+
+          to predict
+
+          <b>Phenotype</b>
+
+          and recommend the most suitable drug, dosage adjustment, alternative
+          medication, clinical reason, and evidence level.
+
+          <br /><br />
+
+          This project is developed using
+
+          <b>Python</b>,
+
+          <b>Flask</b>,
+
+          <b>HTML</b>,
+
+          <b>CSS</b>,
+
+          <b>JavaScript</b>
+
+          and
+
+          <b>CSV Knowledge Bases</b>.
+        </p>
+      </div>
+
+      <!-- ===================== FOOTER ===================== -->
+
+      <footer style="margin-top: 60px">
+        <div
+          style="
+            text-align: center;
+            padding: 25px;
+            background: #0f172a;
+            color: white;
+          "
+        >
+          <h2>
+            <i class="fa-solid fa-dna"></i>
+
+            NeuroPGx Advisor
+          </h2>
+
+          <p>Clinical Decision Support System for Precision Medicine</p>
+
+          <p><strong>Developed By:</strong>Harini Udhayaprakash</p>
+
+          <p>B.Tech BioTechnology</p>
+
+          <p>
+            <i class="fa-solid fa-envelope"></i>
+            hariniudhayaprakash2717@gmail.com
+          </p>
+
+          <p>© 2026 All Rights Reserved</p>
+        </div>
+      </footer>
+    </div>
+    <script>
+      document.getElementById("today").innerHTML = new Date().toLocaleString();
+    </script>
+  </body>
+</html>

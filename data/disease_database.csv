@@ -1,0 +1,21 @@
+DiseaseID,DiseaseName,Description,Symptoms,CommonDrugs,RelatedGenes
+D001,Depression,Mood disorder causing persistent sadness and loss of interest,Sadness;Loss of interest;Fatigue;Sleep disturbance,Fluoxetine;Escitalopram;Sertraline;Paroxetine,CYP2D6;CYP2C19;SLC6A4;ABCB1;BDNF
+D002,Generalized Anxiety Disorder,Chronic anxiety characterized by excessive worry,Excessive worry;Restlessness;Palpitations;Insomnia,Sertraline;Escitalopram;Paroxetine,CYP2C19;SLC6A4;MAOA
+D003,Schizophrenia,Severe psychiatric disorder affecting perception and behavior,Hallucinations;Delusions;Disorganized speech,Risperidone;Aripiprazole;Olanzapine;Quetiapine,CYP2D6;DRD2
+D004,Bipolar Disorder,Mood disorder with episodes of mania and depression,Mania;Depression;Mood swings;Insomnia,Aripiprazole;Olanzapine;Lithium;Quetiapine,CYP2D6;CACNA1C;ANK3
+D005,Epilepsy,Neurological disorder causing recurrent seizures,Seizures;Loss of consciousness;Confusion,Carbamazepine;Phenytoin;Levetiracetam;Lamotrigine,HLA-B*15:02;HLA-A*31:01;SCN1A;SCN2A
+D006,Parkinson's Disease,Progressive neurodegenerative movement disorder,Tremor;Rigidity;Bradykinesia;Balance problems,Levodopa;Pramipexole;Ropinirole,COMT;DRD2
+D007,Alzheimer's Disease,Progressive neurodegenerative disorder causing memory loss,Memory loss;Confusion;Difficulty speaking,Donepezil;Memantine,APOE;GRIN2B
+D008,Migraine,Neurological disorder characterized by recurrent headaches,Headache;Nausea;Photophobia;Vomiting,Amitriptyline;Topiramate,CYP2D6
+D009,Neuropathic Pain,Chronic pain caused by nerve damage,Burning pain;Tingling;Numbness,Tramadol;Morphine;Pregabalin,CYP2D6;OPRM1
+D010,Attention Deficit Hyperactivity Disorder,Neurodevelopmental disorder affecting attention and impulse control,Hyperactivity;Poor concentration;Impulsiveness,Atomoxetine;Methylphenidate,CYP2D6;CHRNA4
+D011,Obsessive Compulsive Disorder,Anxiety disorder with intrusive thoughts and repetitive behaviors,Obsessions;Compulsions;Anxiety,Fluvoxamine;Sertraline,CYP2D6;SLC6A4
+D012,Insomnia,Sleep disorder causing difficulty initiating or maintaining sleep,Difficulty sleeping;Daytime fatigue;Poor concentration,Diazepam;Lorazepam,CYP2C19;GABRA1
+D013,Autism Spectrum Disorder,Neurodevelopmental disorder affecting communication and behavior,Social difficulties;Repetitive behaviors;Speech delay,Risperidone;Aripiprazole,CYP2D6
+D014,Multiple Sclerosis,Autoimmune disease affecting the central nervous system,Muscle weakness;Vision problems;Fatigue,Fingolimod;Interferon beta,HLA-DRB1
+D015,Huntington's Disease,Inherited neurodegenerative disorder causing movement and cognitive decline,Chorea;Cognitive decline;Behavioral changes,Tetrabenazine,CYP2D6
+D016,Amyotrophic Lateral Sclerosis,Progressive motor neuron disease,Muscle weakness;Speech difficulty;Paralysis,Riluzole,SOD1
+D017,Essential Tremor,Neurological disorder causing involuntary shaking,Tremor of hands;Head tremor,Propranolol;Primidone,CYP2D6
+D018,Lewy Body Dementia,Dementia associated with Lewy bodies,Hallucinations;Memory loss;Parkinsonism,Donepezil;Rivastigmine,APOE
+D019,Frontotemporal Dementia,Degenerative disorder affecting frontal and temporal lobes,Behavioral changes;Language impairment,Donepezil;Memantine,MAPT
+D020,Panic Disorder,Anxiety disorder characterized by sudden panic attacks,Chest pain;Sweating;Fear;Palpitations,Sertraline;Escitalopram,CYP2C19;SLC6A4

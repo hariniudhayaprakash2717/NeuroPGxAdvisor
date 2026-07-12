@@ -1,0 +1,11 @@
+PatientID,PatientName,Age,Gender,Disease,Gene,Genotype
+P001,Muthu,21,Male,Depression,CYP2D6,*4/*4
+P002,Rahul,25,Male,Depression,CYP2C19,*2/*2
+P003,Priya,28,Female,Anxiety,CYP2C19,*1/*2
+P004,Arun,30,Male,Epilepsy,HLA-B*15:02,Positive
+P005,Divya,26,Female,Epilepsy,HLA-A*31:01,Positive
+P006,Karthik,35,Male,Schizophrenia,CYP2D6,*4/*4
+P007,Meena,29,Female,Bipolar Disorder,CYP2D6,*1/*4
+P008,Vijay,40,Male,Depression,CYP2D6,*1/*1
+P009,Sneha,32,Female,Anxiety,CYP2C19,*1/*1
+P010,Ramesh,45,Male,Epilepsy,HLA-B*15:02,Negative

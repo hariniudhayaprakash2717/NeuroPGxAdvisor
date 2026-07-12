@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>NeuroPGx Advisor</title>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <!-- ===================== NAVBAR ===================== -->
+
+    <nav class="navbar">
+      <div class="logo">
+        <i class="fa-solid fa-dna"></i>
+
+        <span>NeuroPGx Advisor</span>
+      </div>
+
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+
+        <li><a href="#patient">Patient</a></li>
+
+        <li><a href="#features">Features</a></li>
+
+        <li><a href="#technology">Technology</a></li>
+
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- ===================== HERO ===================== -->
+
+    <section class="hero" id="home">
+      <div class="hero-left">
+        <h1>
+          Personalized
+
+          <br />
+
+          Pharmacogenomics
+
+          <br />
+
+          <span>Treatment Advisor</span>
+        </h1>
+
+        <p>
+          AI-powered Clinical Decision Support System for Precision Medicine in
+          Neuroscience.
+        </p>
+
+        <a href="#patient" class="hero-btn">
+          Analyze Patient
+
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <div class="hero-right">
+        <div class="hero-card">
+          <i class="fa-solid fa-brain"></i>
+
+          <h3>Neuroscience</h3>
+        </div>
+
+        <div class="hero-card">
+          <i class="fa-solid fa-dna"></i>
+
+          <h3>Pharmacogenomics</h3>
+        </div>
+
+        <div class="hero-card">
+          <i class="fa-solid fa-capsules"></i>
+
+          <h3>Drug Recommendation</h3>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== DASHBOARD ===================== -->
+
+    <section class="stats">
+      <div class="stat-box">
+        <h2>{{ diseases|length }}</h2>
+
+        <p>Diseases</p>
+      </div>
+
+      <div class="stat-box">
+        <h2>{{ genes|length }}</h2>
+
+        <p>Genes</p>
+      </div>
+
+      <div class="stat-box">
+        <h2>{{ genotypes|length }}</h2>
+
+        <p>Genotypes</p>
+      </div>
+
+      <div class="stat-box">
+        <h2>500+</h2>
+
+        <p>Drug Rules</p>
+      </div>
+    </section>
+
+    <!-- ===================== PATIENT FORM ===================== -->
+
+    <section class="form-section" id="patient">
+      <div class="glass-card">
+        <h2>
+          <i class="fa-solid fa-user-doctor"></i>
+
+          Patient Pharmacogenomic Analysis
+        </h2>
+
+        <form id="patientForm" action="/predict" method="POST">
+          <div class="input-grid">
+            <div class="input-box">
+              <label> Patient Name </label>
+
+              <input
+                type="text"
+                name="patient_name"
+                placeholder="Enter Patient Name"
+                required
+              />
+            </div>
+            <!-- ===================== Disease ===================== -->
+
+            <div class="input-box">
+              <label> Disease </label>
+
+              <select id="disease" name="disease" required>
+                {% for disease in diseases %}
+
+                <option value="{{ disease }}">{{ disease }}</option>
+
+                {% endfor %}
+              </select>
+            </div>
+
+            <!-- ===================== Gene ===================== -->
+
+            <div class="input-box">
+              <label> Gene </label>
+
+              <select id="gene" name="gene" required>
+                {% for gene in genes %}
+
+                <option value="{{ gene }}">{{ gene }}</option>
+
+                {% endfor %}
+              </select>
+            </div>
+
+            <!-- ===================== Genotype ===================== -->
+
+            <div class="input-box">
+              <label> Genotype </label>
+
+              <select id="genotype" name="genotype" required>
+                {% for genotype in genotypes %}
+
+                <option value="{{ genotype }}">{{ genotype }}</option>
+
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+
+          <div class="button-container">
+            <button type="submit" class="predict-btn">
+              <i class="fa-solid fa-microscope"></i>
+
+              Analyze Patient
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ===================== FEATURES ===================== -->
+
+    <section class="features" id="features">
+      <h2 class="section-title">Platform Features</h2>
+
+      <div class="feature-container">
+        <div class="feature-card">
+          <i class="fa-solid fa-dna"></i>
+
+          <h3>Genotype Prediction</h3>
+
+          <p>
+            Predicts patient phenotype from genotype using pharmacogenomic
+            knowledge.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <i class="fa-solid fa-capsules"></i>
+
+          <h3>Drug Recommendation</h3>
+
+          <p>
+            Provides personalized drug selection and dosage recommendations.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <i class="fa-solid fa-file-medical"></i>
+
+          <h3>Clinical Report</h3>
+
+          <p>Automatically generates downloadable treatment reports.</p>
+        </div>
+      </div>
+    </section>
+    <!-- ===================== AI WORKFLOW ===================== -->
+
+    <section class="workflow">
+      <h2 class="section-title">AI Workflow</h2>
+
+      <div class="workflow-container">
+        <div class="step">
+          <div class="circle">1</div>
+
+          <h3>Patient Details</h3>
+
+          <p>Enter patient demographic details, disease, gene and genotype.</p>
+        </div>
+
+        <div class="arrow">
+          <i class="fa-solid fa-arrow-right"></i>
+        </div>
+
+        <div class="step">
+          <div class="circle">2</div>
+
+          <h3>Phenotype Prediction</h3>
+
+          <p>Predict metabolizer phenotype using pharmacogenomic rules.</p>
+        </div>
+
+        <div class="arrow">
+          <i class="fa-solid fa-arrow-right"></i>
+        </div>
+
+        <div class="step">
+          <div class="circle">3</div>
+
+          <h3>Treatment Recommendation</h3>
+
+          <p>Generate personalized drug, dosage and clinical recommendation.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== TECHNOLOGY ===================== -->
+
+    <section class="technology" id="technology">
+      <h2 class="section-title">Technology Stack</h2>
+
+      <div class="tech-grid">
+        <div class="tech-card">
+          <i class="fa-brands fa-python"></i>
+
+          <h3>Python</h3>
+        </div>
+
+        <div class="tech-card">
+          <i class="fa-solid fa-flask"></i>
+
+          <h3>Flask</h3>
+        </div>
+
+        <div class="tech-card">
+          <i class="fa-solid fa-database"></i>
+
+          <h3>CSV Database</h3>
+        </div>
+
+        <div class="tech-card">
+          <i class="fa-brands fa-html5"></i>
+
+          <h3>HTML5</h3>
+        </div>
+
+        <div class="tech-card">
+          <i class="fa-brands fa-css3-alt"></i>
+
+          <h3>CSS3</h3>
+        </div>
+
+        <div class="tech-card">
+          <i class="fa-brands fa-js"></i>
+
+          <h3>JavaScript</h3>
+        </div>
+
+        <div class="tech-card">
+          <i class="fa-solid fa-dna"></i>
+
+          <h3>Pharmacogenomics</h3>
+        </div>
+
+        <div class="tech-card">
+          <i class="fa-solid fa-brain"></i>
+
+          <h3>Neuroscience</h3>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CONTACT ===================== -->
+
+    <section class="contact" id="contact">
+      <h2 class="section-title">Project Information</h2>
+
+      <div class="glass-card">
+        <div class="input-grid">
+          <div class="input-box">
+            <label> Project Name </label>
+
+            <input type="text" value="NeuroPGx Advisor" readonly />
+          </div>
+
+          <div class="input-box">
+            <label> Project Domain </label>
+
+            <input
+              type="text"
+              value="Pharmacogenomics & Precision Medicine"
+              readonly
+            />
+          </div>
+
+          <div class="input-box">
+            <label> Framework </label>
+
+            <input type="text" value="Python Flask" readonly />
+          </div>
+
+          <div class="input-box">
+            <label> Database </label>
+
+            <input type="text" value="CSV Knowledge Base" readonly />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer>
+      <div class="footer-content">
+        <h2>
+          <i class="fa-solid fa-dna"></i>
+
+          NeuroPGx Advisor
+        </h2>
+
+        <p>AI-powered Pharmacogenomics Clinical Decision Support System</p>
+
+        <p>
+          <strong>Developed By:</strong>
+
+          Harini Udhayaprakash
+        </p>
+
+        <p>
+          <i class="fa-solid fa-envelope"></i>
+
+          hariniudhayaprakash2717@gmail.com
+        </p>
+
+        <p>© 2026 All Rights Reserved</p>
+      </div>
+    </footer>
+
+    <div class="blur blur1"></div>
+
+    <div class="blur blur2"></div>
+
+    <div class="blur blur3"></div>
+    <!-- ===================== JavaScript ===================== -->
+
+    <script>
+      const diseaseSelect = document.getElementById("disease");
+      const geneSelect = document.getElementById("gene");
+      const genotypeSelect = document.getElementById("genotype");
+
+      // ---------------------------
+      // Load Genes
+      // ---------------------------
+
+      function loadGenes() {
+        const disease = diseaseSelect.value;
+
+        fetch("/get_genes/" + encodeURIComponent(disease))
+          .then((response) => response.json())
+
+          .then((data) => {
+            geneSelect.innerHTML = "";
+
+            data.forEach(function (gene) {
+              const option = document.createElement("option");
+
+              option.value = gene;
+
+              option.textContent = gene;
+
+              geneSelect.appendChild(option);
+            });
+
+            loadGenotypes();
+          });
+      }
+
+      // ---------------------------
+      // Load Genotypes
+      // ---------------------------
+
+      function loadGenotypes() {
+        const gene = geneSelect.value;
+
+        fetch("/get_genotypes/" + encodeURIComponent(gene))
+          .then((response) => response.json())
+
+          .then((data) => {
+            genotypeSelect.innerHTML = "";
+
+            data.forEach(function (genotype) {
+              const option = document.createElement("option");
+
+              option.value = genotype;
+
+              option.textContent = genotype;
+
+              genotypeSelect.appendChild(option);
+            });
+          });
+      }
+
+      diseaseSelect.addEventListener("change", loadGenes);
+
+      geneSelect.addEventListener("change", loadGenotypes);
+
+      window.onload = function () {
+        loadGenes();
+      };
+    </script>
+  </body>
+</html>

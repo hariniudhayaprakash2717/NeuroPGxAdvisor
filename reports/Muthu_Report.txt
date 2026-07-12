@@ -1,0 +1,17 @@
+========================================
+      NeuroPGx Treatment Report
+========================================
+
+Patient Name : Muthu
+Disease      : Essential Tremor
+Gene         : CYP2D6
+Genotype     : *1/*4
+Phenotype    : Intermediate Metabolizer
+
+Drug Recommendation
+---------------------------
+Drug               : Propranolol
+Recommendation     : Reduce Dose
+Alternative Drug   : Primidone
+Reason             : Reduced metabolism
+Evidence Level     : Moderate
