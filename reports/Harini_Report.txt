@@ -3,15 +3,15 @@
 ========================================
 
 Patient Name : Harini
-Disease      : Depression
-Gene         : SLC6A4
-Genotype     : Long/Long
-Phenotype    : Normal Response
+Disease      : Alzheimer's Disease
+Gene         : APOE
+Genotype     : E2/E2
+Phenotype    : Low Risk
 
 Drug Recommendation
 ---------------------------
-Drug               : Sertraline
+Drug               : Donepezil
 Recommendation     : Standard Dose
 Alternative Drug   : nan
-Reason             : Expected SSRI response
+Reason             : Standard Alzheimer's treatment
 Evidence Level     : Moderate

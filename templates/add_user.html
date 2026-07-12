@@ -30,39 +30,78 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 
 <nav class="navbar">
 
-<div class="logo">
+    <div class="logo">
 
-<i class="fa-solid fa-dna"></i>
+        <i class="fa-solid fa-dna"></i>
 
-<span>NeuroPGx Advisor</span>
+        <span>NeuroPGx Advisor</span>
 
-</div>
+    </div>
 
-<ul class="nav-links">
+    <!-- Mobile Menu Icon -->
 
-<li><a href="/dashboard">Dashboard</a></li>
+    <div class="menu-toggle" id="menuToggle">
 
-<li><a href="/">Patient Analysis</a></li>
+        <i class="fa-solid fa-bars"></i>
 
-<li><a href="/history">History</a></li>
+    </div>
 
-<li><a href="/druginfo">Drug DB</a></li>
+    <!-- Navigation -->
 
-<li><a href="/admin">Admin</a></li>
+    <ul class="nav-links" id="navLinks">
 
-<li>
+        <li>
+            <a href="/dashboard">
+                <i class="fa-solid fa-house"></i>
+                Dashboard
+            </a>
+        </li>
 
-<a href="/logout" class="logout">
+        <li>
+            <a href="/">
+                <i class="fa-solid fa-user-doctor"></i>
+                Patient Analysis
+            </a>
+        </li>
 
-<i class="fa-solid fa-right-from-bracket"></i>
+        <li>
+            <a href="/history">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                History
+            </a>
+        </li>
 
-Logout
+        <li>
+            <a href="/druginfo">
+                <i class="fa-solid fa-capsules"></i>
+                Drug DB
+            </a>
+        </li>
 
-</a>
+        {% if role == "System Administrator" %}
 
-</li>
+        <li>
+            <a href="/admin">
+                <i class="fa-solid fa-user-shield"></i>
+                Admin
+            </a>
+        </li>
 
-</ul>
+        {% endif %}
+
+        <li>
+
+            <a href="/logout" class="logout">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                Logout
+
+            </a>
+
+        </li>
+
+    </ul>
 
 </nav>
 
@@ -319,7 +358,18 @@ border-top:1px solid rgba(255,255,255,.15);">
 </footer>
 
 </div>
+<script>
 
+const menuToggle=document.getElementById("menuToggle");
+const navLinks=document.getElementById("navLinks");
+
+menuToggle.addEventListener("click",()=>{
+
+    navLinks.classList.toggle("active");
+
+});
+
+</script>
 </body>
 
 </html>

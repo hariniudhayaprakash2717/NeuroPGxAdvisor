@@ -445,57 +445,84 @@
   </head>
 
   <body>
-    <nav class="navbar">
-      <div class="logo">
+    <!-- ===================== NAVBAR ===================== -->
+
+<nav class="navbar">
+
+    <div class="logo">
+
         <i class="fa-solid fa-dna"></i>
 
-        <span>NeuroPGx Dashboard</span>
-      </div>
+        <span>NeuroPGx Advisor</span>
 
-      <ul class="nav-links">
+    </div>
+
+    <!-- Mobile Menu Icon -->
+
+    <div class="menu-toggle" id="menuToggle">
+
+        <i class="fa-solid fa-bars"></i>
+
+    </div>
+
+    <!-- Navigation -->
+
+    <ul class="nav-links" id="navLinks">
+
         <li>
-          <a href="/dashboard"> <i class="fa-solid fa-house"></i> Dashboard </a>
+            <a href="/dashboard">
+                <i class="fa-solid fa-house"></i>
+                Dashboard
+            </a>
         </li>
 
         <li>
-          <a href="/"> <i class="fa-solid fa-user-doctor"></i> Analyze </a>
+            <a href="/">
+                <i class="fa-solid fa-user-doctor"></i>
+                Patient Analysis
+            </a>
         </li>
 
         <li>
-          <a href="/history">
-            <i class="fa-solid fa-clock-rotate-left"></i> History
-          </a>
+            <a href="/history">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                History
+            </a>
         </li>
 
-        {% if role in ["System Administrator","Doctor","Researcher"] %}
-
         <li>
-          <a href="/druginfo"> <i class="fa-solid fa-capsules"></i> Drug DB </a>
+            <a href="/druginfo">
+                <i class="fa-solid fa-capsules"></i>
+                Drug DB
+            </a>
         </li>
 
-        {% endif %} {% if role == "System Administrator" %}
+        {% if role == "System Administrator" %}
 
         <li>
-          <a href="/admin"> <i class="fa-solid fa-gears"></i> Admin </a>
+            <a href="/admin">
+                <i class="fa-solid fa-user-shield"></i>
+                Admin
+            </a>
         </li>
 
         {% endif %}
-      </ul>
 
-      <div class="user">
-        <div class="user-info">
-          <h3>{{ fullname }}</h3>
+        <li>
 
-          <p>{{ role }}</p>
-        </div>
+            <a href="/logout" class="logout">
 
-        <a href="/logout" class="logout">
-          <i class="fa-solid fa-right-from-bracket"></i>
+                <i class="fa-solid fa-right-from-bracket"></i>
 
-          Logout
-        </a>
-      </div>
-    </nav>
+                Logout
+
+            </a>
+
+        </li>
+
+    </ul>
+
+</nav>
 
     <div class="container">
       <div class="welcome">
@@ -753,5 +780,17 @@
           new Date().toLocaleString();
       </script>
     </div>
+    <script>
+
+const menuToggle=document.getElementById("menuToggle");
+const navLinks=document.getElementById("navLinks");
+
+menuToggle.addEventListener("click",()=>{
+
+    navLinks.classList.toggle("active");
+
+});
+
+</script>
   </body>
 </html>

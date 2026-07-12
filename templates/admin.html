@@ -24,7 +24,7 @@
 
     <style>
       .admin-navbar {
-        position: sticky;
+        position: relative;
         top: 0;
         z-index: 999;
         width: 100%;
@@ -125,33 +125,82 @@
   <body>
     <!-- ===================== NAVBAR ===================== -->
 
-    <nav class="admin-navbar">
-      <div class="admin-logo">
+<nav class="navbar">
+
+    <div class="logo">
+
         <i class="fa-solid fa-dna"></i>
 
         <span>NeuroPGx Advisor</span>
-      </div>
 
-      <ul class="admin-links">
-        <li><a href="/dashboard">Dashboard</a></li>
+    </div>
 
-        <li><a href="/">Patient Analysis</a></li>
+    <!-- Mobile Menu Icon -->
 
-        <li><a href="/history">History</a></li>
+    <div class="menu-toggle" id="menuToggle">
 
-        <li><a href="/druginfo">Drug DB</a></li>
+        <i class="fa-solid fa-bars"></i>
 
-        <li><a href="/admin">Admin</a></li>
+    </div>
+
+    <!-- Navigation -->
+
+    <ul class="nav-links" id="navLinks">
 
         <li>
-          <a href="/logout" class="logout-btn">
-            <i class="fa-solid fa-right-from-bracket"></i>
-
-            Logout
-          </a>
+            <a href="/dashboard">
+                <i class="fa-solid fa-house"></i>
+                Dashboard
+            </a>
         </li>
-      </ul>
-    </nav>
+
+        <li>
+            <a href="/">
+                <i class="fa-solid fa-user-doctor"></i>
+                Patient Analysis
+            </a>
+        </li>
+
+        <li>
+            <a href="/history">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                History
+            </a>
+        </li>
+
+        <li>
+            <a href="/druginfo">
+                <i class="fa-solid fa-capsules"></i>
+                Drug DB
+            </a>
+        </li>
+
+        {% if role == "System Administrator" %}
+
+        <li>
+            <a href="/admin">
+                <i class="fa-solid fa-user-shield"></i>
+                Admin
+            </a>
+        </li>
+
+        {% endif %}
+
+        <li>
+
+            <a href="/logout" class="logout">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                Logout
+
+            </a>
+
+        </li>
+
+    </ul>
+
+</nav>
 
     <div class="page-container">
       <!-- ===================== WELCOME SECTION ===================== -->
@@ -660,5 +709,17 @@
         });
       });
     </script>
+    <script>
+
+const menuToggle=document.getElementById("menuToggle");
+const navLinks=document.getElementById("navLinks");
+
+menuToggle.addEventListener("click",()=>{
+
+    navLinks.classList.toggle("active");
+
+});
+
+</script>
   </body>
 </html>

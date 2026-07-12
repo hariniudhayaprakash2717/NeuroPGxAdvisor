@@ -26,25 +26,76 @@
   <body>
     <!-- ===================== NAVBAR ===================== -->
 
-    <nav class="navbar">
-      <div class="logo">
+<nav class="navbar">
+
+    <div class="logo">
+
         <i class="fa-solid fa-dna"></i>
 
         <span>NeuroPGx Advisor</span>
-      </div>
 
-      <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
+    </div>
 
-        <li><a href="#patient">Patient</a></li>
+    
 
-        <li><a href="#features">Features</a></li>
+    <!-- Navigation -->
 
-        <li><a href="#technology">Technology</a></li>
+    <ul class="nav-links" id="navLinks">
 
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
+        <li>
+            <a href="/dashboard">
+                <i class="fa-solid fa-house"></i>
+                Dashboard
+            </a>
+        </li>
+
+        <li>
+            <a href="/">
+                <i class="fa-solid fa-user-doctor"></i>
+                Patient Analysis
+            </a>
+        </li>
+
+        <li>
+            <a href="/history">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                History
+            </a>
+        </li>
+
+        <li>
+            <a href="/druginfo">
+                <i class="fa-solid fa-capsules"></i>
+                Drug DB
+            </a>
+        </li>
+
+        {% if role == "System Administrator" %}
+
+        <li>
+            <a href="/admin">
+                <i class="fa-solid fa-user-shield"></i>
+                Admin
+            </a>
+        </li>
+
+        {% endif %}
+
+        <li>
+
+            <a href="/logout" class="logout">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                Logout
+
+            </a>
+
+        </li>
+
+    </ul>
+
+</nav>
 
     <!-- ===================== HERO ===================== -->
 
@@ -97,41 +148,54 @@
 
     <!-- ===================== DASHBOARD ===================== -->
 
-    <section class="stats">
-      <div class="stat-box">
+   <section class="stats">
+
+    <div class="stat-box">
+        <i class="fa-solid fa-virus"></i>
+
         <h2>{{ diseases|length }}</h2>
 
         <p>Diseases</p>
-      </div>
+    </div>
 
-      <div class="stat-box">
+    <div class="stat-box">
+        <i class="fa-solid fa-dna"></i>
+
         <h2>{{ genes|length }}</h2>
 
         <p>Genes</p>
-      </div>
+    </div>
 
-      <div class="stat-box">
+    <div class="stat-box">
+        <i class="fa-solid fa-microscope"></i>
+
         <h2>{{ genotypes|length }}</h2>
 
         <p>Genotypes</p>
-      </div>
+    </div>
 
-      <div class="stat-box">
+    <div class="stat-box">
+        <i class="fa-solid fa-capsules"></i>
+
         <h2>500+</h2>
 
         <p>Drug Rules</p>
-      </div>
-    </section>
+    </div>
+
+</section>
 
     <!-- ===================== PATIENT FORM ===================== -->
 
     <section class="form-section" id="patient">
-      <div class="glass-card">
+      <div class="form-card">
         <h2>
-          <i class="fa-solid fa-user-doctor"></i>
+    <i class="fa-solid fa-user-doctor"></i>
+    Patient Pharmacogenomic Analysis
+</h2>
 
-          Patient Pharmacogenomic Analysis
-        </h2>
+<p class="form-subtitle">
+    Enter patient information to generate personalized pharmacogenomic treatment recommendations.
+</p>
 
         <form id="patientForm" action="/predict" method="POST">
           <div class="input-grid">
@@ -189,147 +253,219 @@
           </div>
 
           <div class="button-container">
-            <button type="submit" class="predict-btn">
-              <i class="fa-solid fa-microscope"></i>
-
-              Analyze Patient
-            </button>
-          </div>
+    <button type="submit" class="predict-btn analyze-btn">
+        <i class="fa-solid fa-microscope"></i>
+        Analyze Patient
+    </button>
+</div>
         </form>
       </div>
     </section>
 
     <!-- ===================== FEATURES ===================== -->
 
-    <section class="features" id="features">
-      <h2 class="section-title">Platform Features</h2>
+    <section class="features">
 
-      <div class="feature-container">
+    <h2 class="section-title">
+        Platform Features
+    </h2>
+
+    <div class="feature-container">
+
         <div class="feature-card">
-          <i class="fa-solid fa-dna"></i>
+            <i class="fa-solid fa-brain"></i>
 
-          <h3>Genotype Prediction</h3>
+            <h3>Neuroscience</h3>
 
-          <p>
-            Predicts patient phenotype from genotype using pharmacogenomic
-            knowledge.
-          </p>
+            <p>
+                AI-powered neurological disease analysis with pharmacogenomic interpretation.
+            </p>
         </div>
 
         <div class="feature-card">
-          <i class="fa-solid fa-capsules"></i>
+            <i class="fa-solid fa-dna"></i>
 
-          <h3>Drug Recommendation</h3>
+            <h3>Pharmacogenomics</h3>
 
-          <p>
-            Provides personalized drug selection and dosage recommendations.
-          </p>
+            <p>
+                Predict patient phenotype using genotype and gene information.
+            </p>
         </div>
 
         <div class="feature-card">
-          <i class="fa-solid fa-file-medical"></i>
+            <i class="fa-solid fa-pills"></i>
 
-          <h3>Clinical Report</h3>
+            <h3>Drug Recommendation</h3>
 
-          <p>Automatically generates downloadable treatment reports.</p>
+            <p>
+                Personalized drug recommendations with evidence-based guidance.
+            </p>
         </div>
-      </div>
-    </section>
+
+        <div class="feature-card">
+            <i class="fa-solid fa-file-medical"></i>
+
+            <h3>Clinical Reports</h3>
+
+            <p>
+                Generate downloadable pharmacogenomic reports instantly.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <i class="fa-solid fa-shield-heart"></i>
+
+            <h3>Clinical Decision Support</h3>
+
+            <p>
+                Improve treatment safety using precision medicine recommendations.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <i class="fa-solid fa-microscope"></i>
+
+            <h3>Research Ready</h3>
+
+            <p>
+                Designed for researchers, clinicians and healthcare professionals.
+            </p>
+        </div>
+
+    </div>
+
+</section>
     <!-- ===================== AI WORKFLOW ===================== -->
 
     <section class="workflow">
-      <h2 class="section-title">AI Workflow</h2>
 
-      <div class="workflow-container">
+    <h2 class="section-title">
+        How NeuroPGx Advisor Works
+    </h2>
+
+    <div class="workflow-container">
+
         <div class="step">
-          <div class="circle">1</div>
 
-          <h3>Patient Details</h3>
+            <div class="circle">1</div>
 
-          <p>Enter patient demographic details, disease, gene and genotype.</p>
+            <h3>Patient Data</h3>
+
+            <p>
+                Enter patient name, disease, gene and genotype.
+            </p>
+
         </div>
 
         <div class="arrow">
-          <i class="fa-solid fa-arrow-right"></i>
+            <i class="fa-solid fa-arrow-right"></i>
         </div>
 
         <div class="step">
-          <div class="circle">2</div>
 
-          <h3>Phenotype Prediction</h3>
+            <div class="circle">2</div>
 
-          <p>Predict metabolizer phenotype using pharmacogenomic rules.</p>
+            <h3>AI Prediction</h3>
+
+            <p>
+                Predict metabolizer phenotype using pharmacogenomics.
+            </p>
+
         </div>
 
         <div class="arrow">
-          <i class="fa-solid fa-arrow-right"></i>
+            <i class="fa-solid fa-arrow-right"></i>
         </div>
 
         <div class="step">
-          <div class="circle">3</div>
 
-          <h3>Treatment Recommendation</h3>
+            <div class="circle">3</div>
 
-          <p>Generate personalized drug, dosage and clinical recommendation.</p>
+            <h3>Drug Recommendation</h3>
+
+            <p>
+                Generate personalized treatment recommendations.
+            </p>
+
         </div>
-      </div>
-    </section>
+
+    </div>
+
+</section>
 
     <!-- ===================== TECHNOLOGY ===================== -->
 
-    <section class="technology" id="technology">
-      <h2 class="section-title">Technology Stack</h2>
+    <section class="technology">
 
-      <div class="tech-grid">
+    <h2 class="section-title">
+        Technology Stack
+    </h2>
+
+    <div class="tech-grid">
+
         <div class="tech-card">
-          <i class="fa-brands fa-python"></i>
+            <i class="fa-brands fa-python"></i>
 
-          <h3>Python</h3>
+            <h3>Python</h3>
+
+            <p>
+                Backend development using Flask framework.
+            </p>
         </div>
 
         <div class="tech-card">
-          <i class="fa-solid fa-flask"></i>
+            <i class="fa-solid fa-database"></i>
 
-          <h3>Flask</h3>
+            <h3>CSV Database</h3>
+
+            <p>
+                Stores disease, gene, genotype and drug information.
+            </p>
         </div>
 
         <div class="tech-card">
-          <i class="fa-solid fa-database"></i>
+            <i class="fa-solid fa-flask"></i>
 
-          <h3>CSV Database</h3>
+            <h3>Flask</h3>
+
+            <p>
+                Lightweight web framework powering the application.
+            </p>
         </div>
 
         <div class="tech-card">
-          <i class="fa-brands fa-html5"></i>
+            <i class="fa-brands fa-html5"></i>
 
-          <h3>HTML5</h3>
+            <h3>HTML5</h3>
+
+            <p>
+                Responsive user interface and semantic structure.
+            </p>
         </div>
 
         <div class="tech-card">
-          <i class="fa-brands fa-css3-alt"></i>
+            <i class="fa-brands fa-css3-alt"></i>
 
-          <h3>CSS3</h3>
+            <h3>CSS3</h3>
+
+            <p>
+                Modern responsive design with animations.
+            </p>
         </div>
 
         <div class="tech-card">
-          <i class="fa-brands fa-js"></i>
+            <i class="fa-brands fa-js"></i>
 
-          <h3>JavaScript</h3>
+            <h3>JavaScript</h3>
+
+            <p>
+                Interactive UI and dynamic form functionality.
+            </p>
         </div>
 
-        <div class="tech-card">
-          <i class="fa-solid fa-dna"></i>
+    </div>
 
-          <h3>Pharmacogenomics</h3>
-        </div>
-
-        <div class="tech-card">
-          <i class="fa-solid fa-brain"></i>
-
-          <h3>Neuroscience</h3>
-        </div>
-      </div>
-    </section>
+</section>
 
     <!-- ===================== CONTACT ===================== -->
 
@@ -468,5 +604,17 @@
         loadGenes();
       };
     </script>
+    <script>
+
+const menuToggle=document.getElementById("menuToggle");
+const navLinks=document.getElementById("navLinks");
+
+menuToggle.addEventListener("click",()=>{
+
+    navLinks.classList.toggle("active");
+
+});
+
+</script>
   </body>
 </html>

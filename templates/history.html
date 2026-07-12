@@ -301,32 +301,82 @@ table{
 </head>
 
 <body>
+<!-- ===================== NAVBAR ===================== -->
+
 <nav class="navbar">
 
     <div class="logo">
+
         <i class="fa-solid fa-dna"></i>
+
         <span>NeuroPGx Advisor</span>
+
     </div>
 
-    <div class="nav-links">
+    <!-- Mobile Menu Icon -->
 
-        <a href="/dashboard">Dashboard</a>
+    <div class="menu-toggle" id="menuToggle">
 
-        <a href="/">Patient Analysis</a>
+        <i class="fa-solid fa-bars"></i>
 
-        <a href="/history">History</a>
+    </div>
 
-        {% if role in ["System Administrator","Doctor","Researcher"] %}
-        <a href="/druginfo">Drug DB</a>
-        {% endif %}
+    <!-- Navigation -->
+
+    <ul class="nav-links" id="navLinks">
+
+        <li>
+            <a href="/dashboard">
+                <i class="fa-solid fa-house"></i>
+                Dashboard
+            </a>
+        </li>
+
+        <li>
+            <a href="/">
+                <i class="fa-solid fa-user-doctor"></i>
+                Patient Analysis
+            </a>
+        </li>
+
+        <li>
+            <a href="/history">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                History
+            </a>
+        </li>
+
+        <li>
+            <a href="/druginfo">
+                <i class="fa-solid fa-capsules"></i>
+                Drug DB
+            </a>
+        </li>
 
         {% if role == "System Administrator" %}
-        <a href="/admin">Admin</a>
+
+        <li>
+            <a href="/admin">
+                <i class="fa-solid fa-user-shield"></i>
+                Admin
+            </a>
+        </li>
+
         {% endif %}
 
-        <a href="/logout" class="logout">Logout</a>
+        <li>
 
-    </div>
+            <a href="/logout" class="logout">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                Logout
+
+            </a>
+
+        </li>
+
+    </ul>
 
 </nav>
 
@@ -577,7 +627,18 @@ row.style.display="none";
 });
 
 </script>
+<script>
 
+const menuToggle=document.getElementById("menuToggle");
+const navLinks=document.getElementById("navLinks");
+
+menuToggle.addEventListener("click",()=>{
+
+    navLinks.classList.toggle("active");
+
+});
+
+</script>
 </body>
 
 </html>
