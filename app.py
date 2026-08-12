@@ -104,12 +104,30 @@ def login():
 @app.route("/login", methods=["POST"])
 def login_post():
 
-    username = request.form["username"].strip()
-    password = request.form["password"].strip()
+    username = request.form.get("username", "").strip()
+    password = request.form.get("password", "").strip()
 
-    # Search user in users.csv
+    # Reload users.csv every time someone logs in
+    # This ensures newly added users can login immediately.
+    users_file = "data/users.csv"
+
+    try:
+        users_df = pd.read_csv(users_file)
+        users_df.fillna("", inplace=True)
+
+    except Exception:
+        return render_template(
+            "login.html",
+            error="Unable to load user database."
+        )
+
+    # Convert username and password to strings
+    users_df["Username"] = users_df["Username"].astype(str).str.strip()
+    users_df["Password"] = users_df["Password"].astype(str).str.strip()
+
+    # Case-insensitive username authentication
     user = users_df[
-        (users_df["Username"] == username) &
+        (users_df["Username"].str.lower() == username.lower()) &
         (users_df["Password"] == password)
     ]
 
@@ -121,12 +139,16 @@ def login_post():
             error="Invalid Username or Password"
         )
 
+    # Get logged-in user
+    user = user.iloc[0]
+
     # Store user details in session
-    session["user"] = user.iloc[0]["Username"]
-    session["fullname"] = user.iloc[0]["FullName"]
-    session["role"] = user.iloc[0]["Role"]
-    session["department"] = user.iloc[0]["Department"]
-    session["email"] = user.iloc[0]["Email"]
+    session["user"] = user["Username"]
+    session["fullname"] = user["FullName"]
+    session["role"] = user["Role"]
+    session["department"] = user["Department"]
+    session["email"] = user["Email"]
+
     return redirect(url_for("dashboard"))
 
 # =====================================================
